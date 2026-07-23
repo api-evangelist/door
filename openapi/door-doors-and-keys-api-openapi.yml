@@ -1,0 +1,372 @@
+openapi: 3.0.3
+info:
+  title: Authentication Access Management Doors and Keys API
+  description: Authentication
+  termsOfService: urn:tos
+  contact: {}
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0
+  version: '1.0'
+servers:
+- url: https://auth.prod.latch.com
+  description: Latch Auth API base URL
+tags:
+- name: Doors and Keys
+  description: Door/Key and key operations
+paths:
+  /v1/doors:
+    get:
+      tags:
+      - Doors and Keys
+      summary: List Doors
+      description: Get a DOOR partner's list of doors/keys
+      operationId: listDoors
+      parameters:
+      - name: pageSize
+        in: query
+        description: Max number of doors/keys to return
+        required: false
+        style: form
+        schema:
+          type: integer
+          format: int32
+      - name: pageToken
+        in: query
+        description: The token of page to return
+        required: false
+        style: form
+        schema:
+          type: string
+      - name: buildingUuid
+        in: query
+        description: Building UUID for filtering doors/keys
+        required: false
+        style: form
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: Successfully retrieved list of doors/keys
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DoorsResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestError'
+        '401':
+          description: Invalid authorization token
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+      security:
+      - bearerAuth: []
+  /v1/keys:
+    get:
+      tags:
+      - Doors and Keys
+      summary: List Keys
+      description: Get a DOOR partner's list of keys for a building
+      operationId: listKeys
+      parameters:
+      - name: pageSize
+        in: query
+        description: Max number of keys to return
+        required: false
+        style: form
+        schema:
+          type: integer
+          format: int32
+      - name: pageToken
+        in: query
+        description: The token of page to return
+        required: false
+        style: form
+        schema:
+          type: string
+      - name: buildingUuid
+        in: query
+        description: Building UUID for filtering keys
+        required: false
+        style: form
+        schema:
+          type: string
+          format: uuid
+      - name: includeDoors
+        in: query
+        description: When true, each key in the response includes the list of doors/keys it grants access to. Defaults to false.
+        required: false
+        style: form
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: Successfully retrieved list of keys
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KeysResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestError'
+        '401':
+          description: Invalid authorization token
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+      security:
+      - bearerAuth: []
+components:
+  schemas:
+    KeysResponse:
+      title: KeysResponse
+      required:
+      - keys
+      type: object
+      properties:
+        keys:
+          type: array
+          items:
+            $ref: '#/components/schemas/Key'
+        nextPageToken:
+          type: string
+          description: Token to fetch the next page
+          example: '1'
+      description: Response from the keys endpoint
+    DoorsResponse:
+      title: DoorsResponse
+      required:
+      - doors
+      type: object
+      properties:
+        doors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Door'
+        nextPageToken:
+          type: string
+          description: Token to fetch the next page
+          example: '1'
+      description: Response from the doors/keys endpoint
+    Key:
+      title: Key
+      required:
+      - name
+      - uuid
+      type: object
+      properties:
+        accountUuid:
+          type: string
+          description: UUID of the account that owns the key
+          format: uuid
+        buildingUuid:
+          type: string
+          description: UUID of the building
+          format: uuid
+        doors:
+          type: array
+          description: List of doors/keys the key grants access to. Only populated when listKeys is called with includeDoors=true.
+          items:
+            $ref: '#/components/schemas/KeyDoor'
+        doorsType:
+          type: string
+          description: Type of doors/keys the key grants access to.
+          enum:
+          - DOOR
+          - ELEVATOR
+        endTime:
+          type: string
+          description: End time of key access
+          format: date-time
+        keyType:
+          type: string
+          description: 'Distinguishes single-door/key Keys from regular multi-door/key Keys created in DOOR OS. - `SINGLE`: single-door/key Key. - `REGULAR`: regular DOOR OS Key. '
+          enum:
+          - REGULAR
+          - SINGLE
+        name:
+          type: string
+          description: Name of the key
+        startTime:
+          type: string
+          description: Start time of key access
+          format: date-time
+        uuid:
+          type: string
+          description: Key unique identifier
+          format: uuid
+      description: DOOR Key object
+    InternalServerError:
+      title: InternalServerError
+      required:
+      - message
+      type: object
+      properties:
+        message:
+          type: string
+          enum:
+          - INTERNAL_SERVER_ERROR
+    Battery:
+      title: Battery
+      required:
+      - lastUpdated
+      - percentage
+      type: object
+      properties:
+        lastUpdated:
+          type: integer
+          description: Indicates latest time when the battery percentage was updated
+          format: int64
+          example: 1737137633
+        percentage:
+          type: integer
+          description: Estimated battery percentage
+          format: int32
+          example: 92
+      description: Information on the device battery.
+    KeyDoor:
+      title: KeyDoor
+      required:
+      - name
+      - sdkDoorUuid
+      type: object
+      properties:
+        name:
+          type: string
+          description: Name of the door/key
+        sdkDoorUuid:
+          type: string
+          description: DOOR Door/Key Unique Identifier - for SDK use only
+          format: uuid
+        type:
+          type: string
+          description: Door/Key type.
+          enum:
+          - COMMUNAL
+          - ELEVATOR
+          - ENTRANCE
+          - RESIDENCE
+          - SERVICE
+      description: Door/Key associated with a Key
+    DeviceInfo:
+      title: DeviceInfo
+      required:
+      - battery
+      - serialNumber
+      - type
+      type: object
+      properties:
+        battery:
+          $ref: '#/components/schemas/Battery'
+        serialNumber:
+          type: string
+          description: Serial number of the lock device
+          example: 0123456789
+        type:
+          type: string
+          description: DOOR device type
+          example: C
+      description: Additional information about the physical lock device.
+    UnauthorizedError:
+      title: UnauthorizedError
+      required:
+      - message
+      type: object
+      properties:
+        message:
+          type: string
+          enum:
+          - UNAUTHORIZED
+    BadRequestError:
+      title: BadRequestError
+      required:
+      - message
+      type: object
+      properties:
+        message:
+          type: string
+          enum:
+          - BUILDING_UUID_REQUIRED
+          - EMAIL_AND_PHONE_PROVIDED
+          - EMAIL_CAN_NOT_BE_EMPTY
+          - EMAIL_OR_PHONE_REQUIRED
+          - EMAIL_REQUIRED_FOR_PERMANENT
+          - END_TIME_NOT_SUPPORTED
+          - INVALID_END_TIME
+          - INVALID_PHONE
+          - INVALID_START_TIME
+          - MISSING_END_TIME
+          - PASSCODE_TYPE_CANT_BE_REVOKED
+          - USER_CAN_NOT_SHARE
+    Door:
+      title: Door
+      required:
+      - buildingUuid
+      - name
+      - type
+      - uuid
+      type: object
+      properties:
+        accessibilityType:
+          type: string
+          enum:
+          - COMMUNAL
+          - PRIVATE
+        buildingUuid:
+          type: string
+          description: UUID of the building
+          format: uuid
+        device:
+          $ref: '#/components/schemas/DeviceInfo'
+        isConnected:
+          type: boolean
+          description: Indicates whether a door/key is connected to the internet via wifi/ethernet/hub
+          example: false
+        name:
+          type: string
+          description: Name of the door/key
+        sdkDoorUuid:
+          type: string
+          description: DOOR Door/Key Unique Identifier - for SDK use only
+          format: uuid
+        type:
+          type: string
+          description: Type of door/key
+          enum:
+          - DOOR
+          - ELEVATOR
+        uuid:
+          type: string
+          description: Door/Key unique identifier
+          format: uuid
+      description: DOOR Door/Key object

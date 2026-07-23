@@ -1,0 +1,182 @@
+openapi: 3.0.3
+info:
+  title: Authentication Access Management Buildings API
+  description: Authentication
+  termsOfService: urn:tos
+  contact: {}
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0
+  version: '1.0'
+servers:
+- url: https://auth.prod.latch.com
+  description: Latch Auth API base URL
+tags:
+- name: Buildings
+  description: Building operations
+paths:
+  /v1/buildings:
+    get:
+      tags:
+      - Buildings
+      summary: List Buildings
+      description: Get a DOOR partner's list of buildings
+      operationId: listBuildings
+      responses:
+        '200':
+          description: Successfully retrieved list of buildings
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BuildingsResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestError'
+        '401':
+          description: Invalid authorization token
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+      security:
+      - bearerAuth: []
+components:
+  schemas:
+    Portfolio:
+      title: Portfolio
+      required:
+      - name
+      - uuid
+      type: object
+      properties:
+        name:
+          type: string
+          description: Name of the Portfolio
+        uuid:
+          type: string
+          description: Portfolio unique identifier
+          format: uuid
+      description: DOOR Portfolio object
+    InternalServerError:
+      title: InternalServerError
+      required:
+      - message
+      type: object
+      properties:
+        message:
+          type: string
+          enum:
+          - INTERNAL_SERVER_ERROR
+    Address:
+      title: Address
+      required:
+      - addressLine1
+      - addressLine2
+      - addressLine3
+      - city
+      - country
+      - postalCode
+      - state
+      type: object
+      properties:
+        addressLine1:
+          type: string
+          description: Address line 1
+        addressLine2:
+          type: string
+          description: Address line 2
+        addressLine3:
+          type: string
+          description: Address line 3
+        city:
+          type: string
+          description: City the building is located in
+        country:
+          type: string
+          description: Country the building is located in
+        postalCode:
+          type: string
+          description: Postal code of the building
+        state:
+          type: string
+          description: State the building is located in
+      description: Address of the building
+    UnauthorizedError:
+      title: UnauthorizedError
+      required:
+      - message
+      type: object
+      properties:
+        message:
+          type: string
+          enum:
+          - UNAUTHORIZED
+    BadRequestError:
+      title: BadRequestError
+      required:
+      - message
+      type: object
+      properties:
+        message:
+          type: string
+          enum:
+          - BUILDING_UUID_REQUIRED
+          - EMAIL_AND_PHONE_PROVIDED
+          - EMAIL_CAN_NOT_BE_EMPTY
+          - EMAIL_OR_PHONE_REQUIRED
+          - EMAIL_REQUIRED_FOR_PERMANENT
+          - END_TIME_NOT_SUPPORTED
+          - INVALID_END_TIME
+          - INVALID_PHONE
+          - INVALID_START_TIME
+          - MISSING_END_TIME
+          - PASSCODE_TYPE_CANT_BE_REVOKED
+          - USER_CAN_NOT_SHARE
+    BuildingsResponse:
+      title: BuildingsResponse
+      required:
+      - buildings
+      type: object
+      properties:
+        buildings:
+          type: array
+          items:
+            $ref: '#/components/schemas/Building'
+      description: Response from the buildings endpoint
+    Building:
+      title: Building
+      required:
+      - address
+      - name
+      - uuid
+      type: object
+      properties:
+        address:
+          $ref: '#/components/schemas/Address'
+        name:
+          type: string
+          description: Name of the Building
+        portfolio:
+          $ref: '#/components/schemas/Portfolio'
+        timezone:
+          type: string
+          description: Timezone of the building in IANA zone ID format
+          example: America/New_York
+        uuid:
+          type: string
+          description: Building unique identifier
+          format: uuid
+      description: DOOR Building object

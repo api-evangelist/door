@@ -1,0 +1,101 @@
+openapi: 3.0.3
+info:
+  title: Authentication Access Management Partner Authentication API
+  description: Authentication
+  termsOfService: urn:tos
+  contact: {}
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0
+  version: '1.0'
+servers:
+- url: https://auth.prod.latch.com
+  description: Latch Auth API base URL
+tags:
+- name: Partner Authentication
+  description: Partner authentication operations
+paths:
+  /v1/oauth/token#m2m:
+    post:
+      tags:
+      - Partner Authentication
+      summary: Authenticate Partner
+      description: M2M Authorization endpoint
+      operationId: authenticatePartner
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuthorizationRequestParams'
+      responses:
+        '200':
+          description: Successfully authenticated with Auth0
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthorizationResponseParams'
+        '201':
+          description: Created
+        '401':
+          description: Invalid Auth0 Credentials
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+components:
+  schemas:
+    UnauthorizedError:
+      title: UnauthorizedError
+      required:
+      - message
+      type: object
+      properties:
+        message:
+          type: string
+          enum:
+          - UNAUTHORIZED
+    AuthorizationResponseParams:
+      title: AuthorizationResponseParams
+      required:
+      - access_token
+      - token_type
+      type: object
+      properties:
+        access_token:
+          type: string
+          description: Auth0 access token
+        token_type:
+          type: string
+          description: Token type
+          enum:
+          - Bearer
+      description: Response from the authentication endpoint
+    AuthorizationRequestParams:
+      title: AuthorizationRequestParams
+      required:
+      - audience
+      - client_id
+      - client_secret
+      - grant_type
+      type: object
+      properties:
+        audience:
+          type: string
+          description: Latch API to be authorized for
+          default: https://rest.latchaccess.com/access/sdk
+        client_id:
+          type: string
+          description: Auth0 client identifier
+        client_secret:
+          type: string
+          description: Auth0 client secret
+        grant_type:
+          type: string
+          description: Always "client_credentials"
+          enum:
+          - client_credentials
+      description: Parameters for the Auth0 endpoint
