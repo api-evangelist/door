@@ -1,0 +1,25 @@
+generated: '2026-07-18'
+method: searched
+source: https://developers.door.com/docs/, https://status.latch.com
+versioning:
+  scheme: uri-path
+  current: v2
+  detail: >-
+    API versions are carried in the path (/v1, /v2). Grant Access is offered as v1
+    (grantAccessToUser) and v2 (grantAccessToUserV2, richer response). Mobile SDKs are versioned
+    independently (OpenDOOR SDK v2.2 current).
+  docs: https://developers.door.com/reference
+deprecation:
+  policy_url: https://developers.door.com/docs/migrating-from-latch-sdk-v1-to-opendoor-sdk-v2.md
+  detail: >-
+    The predecessor Latch SDK v1 (OpenKit) is superseded by OpenDOOR SDK v2; DOOR publishes a
+    migration guide. No formal RFC 8594 Sunset/Deprecation header policy is documented for the
+    REST API.
+  sunset_header: false
+sla:
+  documented: false
+status_page: https://status.latch.com
+status_page_detail: >-
+  DOOR (Latch) publishes a public status page at status.latch.com (also latch.statuspage.io),
+  reporting across multiple components with up/warn/down/maintenance states.
+deprecated_operations: []

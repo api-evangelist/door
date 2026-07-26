@@ -1,0 +1,73 @@
+generated: '2026-07-18'
+method: derived
+source: openapi/door-partner-openapi.json
+id_scheme: uuid
+entities:
+- name: Portfolio
+  detail: Grouping of buildings.
+- name: Building
+  key: uuid
+  fields: [address, name, portfolio, timezone, uuid]
+- name: Door
+  key: uuid
+  fields: [accessibilityType, buildingUuid, device, isConnected, name, sdkDoorUuid, type, uuid]
+- name: Device
+  detail: Physical lock/reader hardware attached to a door (battery, deviceInfo).
+- name: Key
+  key: uuid
+  fields: [accountUuid, buildingUuid, doors, doorsType, endTime, keyType, name, startTime, uuid]
+- name: User
+  key: userUuid
+  fields: [accesses, email, firstName, lastName, phone, userUuid]
+- name: Resident
+  key: userUuid
+  detail: A user with active key membership in a building.
+- name: UserAccess
+  fields: [doorUuid, doorcode, endTime, granter, passcodeType, role, sdkDoorUuid, shareable, startTime, userUuid]
+- name: KeyAccess
+  fields: [doors, endTime, granter, keyUuid, passcodeType, role, shareable, startTime, userUuid]
+relationships:
+- from: Building
+  to: Portfolio
+  type: belongs_to
+  via: portfolio
+- from: Door
+  to: Building
+  type: belongs_to
+  via: buildingUuid
+- from: Door
+  to: Device
+  type: has_one
+  via: device
+- from: Key
+  to: Building
+  type: belongs_to
+  via: buildingUuid
+- from: Key
+  to: Door
+  type: has_many
+  via: doors
+- from: User
+  to: UserAccess
+  type: has_many
+  via: accesses
+- from: UserAccess
+  to: Door
+  type: belongs_to
+  via: doorUuid
+- from: UserAccess
+  to: User
+  type: belongs_to
+  via: userUuid
+- from: KeyAccess
+  to: Key
+  type: belongs_to
+  via: keyUuid
+- from: KeyAccess
+  to: User
+  type: belongs_to
+  via: userUuid
+- from: Resident
+  to: Building
+  type: belongs_to
+  via: listBuildingResidents (buildingUuid path)

@@ -1,0 +1,25 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for DOOR OpenDOOR Partner API
+  version: 1.0.0
+extends: openapi/door-partner-openapi.json
+actions:
+- target: $.info
+  update:
+    x-apievangelist-provider: door
+    x-apievangelist-category: [access-control, proptech, physical-security, iot]
+    x-apievangelist-auth: Auth0 JWT bearer (partner-scoped M2M and user-scoped passwordless)
+    x-apievangelist-pagination: cursor (pageSize + pageToken)
+    x-apievangelist-agentic-note: >-
+      Access-mutating operations actuate physical door locks; treat grant/revoke/update access as
+      safety-critical and gate behind human confirmation and short-lived purpose-scoped tokens.
+- target: $.info
+  update:
+    x-apievangelist-artifacts:
+      authentication: authentication/door-authentication.yml
+      conventions: conventions/door-conventions.yml
+      errors: errors/door-problem-types.yml
+      error_codes: errors/door-error-codes.yml
+      lifecycle: lifecycle/door-lifecycle.yml
+      data_model: data-model/door-data-model.yml
+      agentic_access: agentic-access/door-agentic-access.yml

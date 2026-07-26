@@ -1,0 +1,47 @@
+generated: '2026-07-18'
+method: derived
+status: candidate
+source: openapi/door-partner-openapi.json
+notes: >-
+  No official hosted/remote MCP server was found for DOOR/OpenDOOR. This is a
+  candidate tool list derived one-to-one from the OpenDOOR Partner API operations.
+  Access-mutating tools (grant/revoke access) map to physical door actuation and
+  should be gated behind human confirmation and short-lived, purpose-scoped tokens
+  (see agentic-access/door-agentic-access.yml).
+server:
+  name: door
+  transport: http
+tools:
+- name: list_buildings
+  description: Get a DOOR partner's list of buildings
+  source_operation: openapi/door-partner-openapi.json#listBuildings
+- name: list_doors
+  description: Get a DOOR partner's list of doors/keys
+  source_operation: openapi/door-partner-openapi.json#listDoors
+- name: list_keys
+  description: Get a DOOR partner's list of keys for a building
+  source_operation: openapi/door-partner-openapi.json#listKeys
+- name: list_users
+  description: Get a DOOR partner's list of users
+  source_operation: openapi/door-partner-openapi.json#listUsers
+- name: get_user
+  description: Get a single user for a DOOR partner
+  source_operation: openapi/door-partner-openapi.json#getUser
+- name: list_building_residents
+  description: Get residents based on active key memberships in a building
+  source_operation: openapi/door-partner-openapi.json#listBuildingResidents
+- name: list_key_accesses
+  description: Get all accesses on a key for a DOOR partner
+  source_operation: openapi/door-partner-openapi.json#listKeyAccesses
+- name: grant_access_to_user
+  description: Create a DOOR user and grant access to doors/keys (physical access - gate behind confirmation)
+  source_operation: openapi/door-partner-openapi.json#grantAccessToUser
+- name: grant_access_to_user_v2
+  description: Create a DOOR user and grant access to doors/keys, richer response (physical access - gate behind confirmation)
+  source_operation: openapi/door-partner-openapi.json#grantAccessToUserV2
+- name: update_user_access
+  description: Update user access to the given door/key (physical access - gate behind confirmation)
+  source_operation: openapi/door-partner-openapi.json#updateUserAccess
+- name: revoke_user_access
+  description: Revoke user access to the given door/key (physical access - gate behind confirmation)
+  source_operation: openapi/door-partner-openapi.json#revokeUserAccess

@@ -1,0 +1,37 @@
+generated: '2026-07-18'
+method: searched
+source: https://developers.door.com/docs/android-release-notes.md, https://developers.door.com/docs/ios-release-notes.md
+scheme: semver
+scope: sdk
+notes: >-
+  DOOR publishes dated-by-version release notes for its OpenDOOR mobile SDKs (iOS and Android).
+  The REST Partner API is versioned in the path (v1/v2) rather than via a public dated changelog.
+current:
+  android: 2.2.0
+  ios: 2.2.0
+entries:
+- component: Android SDK
+  version: 2.2.0
+  breaking: true
+  highlights:
+  - Redesigned unlock event model - UnlockEvent is now a single data class (lock, method, status) exposing the full unlock lifecycle; old sealed subclasses removed.
+  - UnlockFailureReason changed from enum to sealed class with new AuthFailed/ConnectionFailed/Internal(code) cases.
+  - New stopListenForLocks/stopListenForUnlockEvents deregistration APIs and runtime setLogLevel control.
+  - Auto-retry on transient sync errors; more precise guest-revocation (DEVICE_NOT_FOUND) and access-log results.
+- component: Android SDK
+  version: 2.1.1
+  breaking: false
+  highlights:
+  - Coroutine-first suspend functions, Flow/callback listeners, Activity-based setup for permission/consent UI.
+  - Shared unlock event stream for explicit and proximity unlocks; cancelUnlock() support; increased proximity range.
+- component: iOS SDK
+  version: 2.2.0
+  breaking: true
+  highlights:
+  - Redesigned fine-grained unlock status reporting; UnlockEventStatus and UnlockFailureReason reshaped (consumers must update handling).
+  - Bounded timeout for sync-package downloads during unlock; skip unnecessary BLE connections; faster failure handling.
+- component: iOS SDK
+  version: 2.1.0
+  breaking: false
+  highlights:
+  - Swift concurrency APIs with uniform errors; stream-based lock/unlock listeners; unified unlock pipeline; cancelUnlock().

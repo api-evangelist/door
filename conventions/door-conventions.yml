@@ -1,0 +1,51 @@
+generated: '2026-07-18'
+method: searched
+source: openapi/door-partner-openapi.json, https://developers.door.com/docs/
+authentication:
+  style: bearer-jwt
+  detail: >-
+    Auth0-issued JWT presented as `Authorization: Bearer <token>`. Partner-scoped (M2M) or
+    user-scoped (passwordless) tokens. See authentication/door-authentication.yml.
+  ref: authentication/door-authentication.yml
+idempotency:
+  supported: false
+  detail: >-
+    OpenDOOR does not document an idempotency-key mechanism; no Idempotency-Key header or
+    parameter appears in the Partner API. Access grants are addressed by user/door/key UUIDs.
+pagination:
+  style: cursor
+  detail: List endpoints (doors, keys, users, residents, key accesses) use token-based paging.
+  request_params:
+  - name: pageSize
+    in: query
+    description: Max number of items to return
+  - name: pageToken
+    in: query
+    description: Token of the page to return
+  response_fields:
+  - nextPageToken
+versioning:
+  style: uri-path
+  detail: >-
+    API version is embedded in the path (/v1, /v2). Grant Access exists as both grantAccessToUser
+    (/v1/users) and grantAccessToUserV2 (/v2/users, richer response). SDKs are versioned separately
+    (OpenDOOR SDK v2.x; Latch SDK v1 / OpenKit is the predecessor).
+  ref: lifecycle/door-lifecycle.yml
+error_envelope:
+  format: custom
+  detail: >-
+    Errors return application/json with a single `message` field carrying an uppercase enum code
+    (e.g. UNAUTHORIZED, NOT_FOUND, INTERNAL_SERVER_ERROR, or a specific 400 validation code).
+    Not RFC 9457 problem+json. See errors/door-problem-types.yml and errors/door-error-codes.yml.
+  field: message
+  ref: errors/door-problem-types.yml
+rate_limiting:
+  documented: true
+  numeric_limits: false
+  detail: >-
+    DOOR states Partner traffic is "aggressively monitored for unusual activity and rate-limited
+    based on reasonable usage patterns." No published numeric limits or rate-limit response headers.
+  source: https://developers.door.com/docs/environments.md
+identifiers:
+  scheme: uuid
+  detail: Buildings, doors, keys, and users are addressed by UUIDs (buildingUuid, doorUuid, keyUuid, userUuid); doors also carry an sdkDoorUuid.

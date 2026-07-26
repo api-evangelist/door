@@ -1,0 +1,48 @@
+generated: '2026-07-18'
+method: searched
+source: live probes of /.well-known/ on DOOR (door.com), the developer hub, and the Auth0 auth host
+hosts:
+- host: https://auth.prod.latch.com
+  note: DOOR (Latch) Auth0 authorization host used by OpenDOOR M2M and passwordless flows
+  documents:
+  - path: /.well-known/openid-configuration
+    status: 200
+    file: door-openid-configuration.json
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    file: door-oauth-authorization-server.json
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+- host: https://door.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+- host: https://developers.door.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+- host: https://rest.latchaccess.com
+  note: OpenDOOR Partner REST API base host
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404

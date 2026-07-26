@@ -1,0 +1,24 @@
+{
+  "provider": "door",
+  "sources": [
+    "door-access-management-api-openapi.yml",
+    "door-buildings-api-openapi.yml",
+    "door-doors-and-keys-api-openapi.yml",
+    "door-partner-authentication-api-openapi.yml",
+    "door-user-authentication-api-openapi.yml",
+    "door-users-api-openapi.yml"
+  ],
+  "outputs": [
+    "door-access-management-api-openapi.yml",
+    "door-buildings-api-openapi.yml",
+    "door-doors-and-keys-api-openapi.yml",
+    "door-partner-authentication-api-openapi.yml",
+    "door-user-authentication-api-openapi.yml",
+    "door-users-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

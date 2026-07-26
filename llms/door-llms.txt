@@ -1,0 +1,50 @@
+# OpenDOOR Documentation
+
+> Documentation for OpenDOOR
+
+## Guides
+- [Customers and Service Partners](https://developers.door.com/docs/customers-and-service-partners.md)
+- [Environments](https://developers.door.com/docs/environments.md)
+- [Supported Devices](https://developers.door.com/docs/supported-devices.md)
+- [System Flows](https://developers.door.com/docs/system-flows.md)
+- [Partner Backend](https://developers.door.com/docs/partner-backend.md): DOOR will provide Partners with a unique [Aut0 App](https://auth0.com/docs/get-started/applications)
+- [Buildings](https://developers.door.com/docs/buildings.md): Buildings represent the top-level physical locations in OpenDOOR. They group doors, residents, and access permissions under a single property.
+- [Get Buildings](https://developers.door.com/docs/get-buildings.md): Partners can fetch a list of their Buildings. This will be done by using a partner-scoped token from the BE.
+- [Doors](https://developers.door.com/docs/doors.md): Doors represent the physical access points (e.g., unit doors, common areas, elevators) within a building.
+- [Get Doors](https://developers.door.com/docs/get-doors.md)
+- [Get Keys](https://developers.door.com/docs/get-keys.md): Partners can view keys. This will be done by using a partner-scoped token from the BE.
+- [Users](https://developers.door.com/docs/users.md): Users represent individuals who were granted access to doors.
+- [Get Users](https://developers.door.com/docs/get-users.md): Partners can fetch a list of their Users. This will be done by using a partner-scoped token from the BE.
+- [Get User](https://developers.door.com/docs/get-user.md): Partners can fetch a single user. This will be done by using a partner-scoped token from the BE.
+- [Get Building Residents](https://developers.door.com/docs/get-building-residents.md): Partners can fetch a list of users in a building that are residents with active accesses. This will be done by using a partner-scoped token from the BE.
+- [Access](https://developers.door.com/docs/access.md): Access defines which users can interact with which doors, and under what conditions.
+- [Create Access](https://developers.door.com/docs/post-access.md): Partners can invite users, without the need of creating them ahead of time, and grant access to a set of doors. This will be done by using a partner-scoped token from the BE.
+- [Update Access](https://developers.door.com/docs/patch-access.md): Partners can update user access to given doors. This will be done by using a partner-scoped token from the BE.
+- [Revoke Access](https://developers.door.com/docs/delete-revoke-access.md): Partners can revoke user access to given doors. This will be done by using a partner-scoped token from the BE.
+- [Get Accesses By Key](https://developers.door.com/docs/get-accesses-by-key.md)
+- [Partner App](https://developers.door.com/docs/partner-app.md): Responsible for hosting the DOOR IOS/ADR SDK.
+- [iOS SDK](https://developers.door.com/docs/ios-docs.md): The SDK provides APIs to view, unlock and sync DOOR-supported locks and to manage guests accesses.
+- [Release notes](https://developers.door.com/docs/ios-release-notes.md): iOS SDK release notes
+- [Android SDK](https://developers.door.com/docs/android-docs.md): The SDK provides APIs to view, unlock and sync DOOR-supported locks and to manage guest access. This tutorial corresponds with version 2.2 of the SDK
+- [Release notes](https://developers.door.com/docs/android-release-notes.md): Android SDK release notes
+- [Good Practices](https://developers.door.com/docs/good-practices.md): Guideline for good practices on using our OpenDOOR Mobile SDK
+- [Test Scenarios](https://developers.door.com/docs/test-scenarios.md): This document outlines best practices for testing the mobile application under poor or unstable network conditions to ensure resilience, proper error handling and good user experience.
+- [Migrating from Latch SDK v1 to OpenDOOR SDK v2](https://developers.door.com/docs/migrating-from-latch-sdk-v1-to-opendoor-sdk-v2.md): Step-by-step guide for upgrading existing Latch SDK v1 (OpenKit) integrations to OpenDOOR SDK v2 on Android and iOS.
+- [Web SDK](https://developers.door.com/docs/web-sdk.md): The OpenDOOR Web SDK allows your web application to retrieve the doors a user can unlock and display any available door codes.
+
+## API Reference
+- [Authenticate Partner](https://developers.door.com/reference/authenticatepartner.md): M2M Authorization endpoint
+- [Start Passwordless Login](https://developers.door.com/reference/startpasswordlesslogin.md): Passwordless Authorization start endpoint
+- [Complete Authentication](https://developers.door.com/reference/completeauthentication.md): Passwordless Authorization endpoint
+- [Refresh Token](https://developers.door.com/reference/refreshtoken.md): Auth0 token refresh endpoint
+- [List Buildings](https://developers.door.com/reference/listbuildings.md): Get a DOOR partner's list of buildings
+- [List Doors](https://developers.door.com/reference/listdoors.md): Get a DOOR partner's list of doors/keys
+- [List Keys](https://developers.door.com/reference/listkeys.md): Get a DOOR partner's list of keys for a building
+- [List Users](https://developers.door.com/reference/listusers.md): Get a DOOR partner's list of users
+- [Get User](https://developers.door.com/reference/getuser.md): Get a single user for a DOOR partner
+- [List Building Residents](https://developers.door.com/reference/listbuildingresidents.md): Get residents based on active key memberships in a building.
+- [List Accesses By Key](https://developers.door.com/reference/listkeyaccesses.md): Get all accesses on a key for a DOOR partner
+- [Grant Access to User](https://developers.door.com/reference/grantaccesstouser.md): Create DOOR user and grant access to doors/keys
+- [Grant Access to User V2](https://developers.door.com/reference/grantaccesstouserv2.md): Create DOOR user and grant access to doors/keys. Returns a richer response than V1.
+- [Update User Access](https://developers.door.com/reference/updateuseraccess.md): Update user access to the given door/key.
+- [Revoke User Access](https://developers.door.com/reference/revokeuseraccess.md): Revoke user access to the given door/key.

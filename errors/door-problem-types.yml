@@ -1,0 +1,36 @@
+generated: '2026-07-18'
+method: derived
+source: openapi/door-partner-openapi.json
+format: custom
+envelope:
+  field: message
+  content_type: application/json
+  detail: >-
+    OpenDOOR errors return a JSON body with a single `message` field holding an uppercase enum
+    code. This is NOT RFC 9457 (application/problem+json). The full 400 validation code registry
+    is in errors/door-error-codes.yml.
+problems:
+- status: 400
+  code: BAD_REQUEST
+  title: Bad request
+  schema: BadRequestError
+  detail: Validation failure; `message` carries a specific code (see door-error-codes.yml).
+- status: 401
+  code: UNAUTHORIZED
+  title: Unauthorized
+  schema: UnauthorizedError
+  detail: Missing, invalid, or expired Bearer token.
+- status: 403
+  code: FORBIDDEN
+  title: Forbidden
+  detail: Authenticated but not permitted for the requested building/door/user.
+- status: 404
+  code: NOT_FOUND
+  title: Resource not found
+  schema: NotFoundError
+- status: 500
+  code: INTERNAL_SERVER_ERROR
+  title: Internal server error
+  schema: InternalServerError
+applies_to:
+- openapi/door-partner-openapi.json

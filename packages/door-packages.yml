@@ -1,0 +1,32 @@
+generated: '2026-07-18'
+method: searched
+source: https://developers.door.com/docs/ (OpenDOOR SDK documentation)
+notes: >-
+  DOOR (formerly Latch) distributes its OpenDOOR mobile/web SDKs to authorized
+  partners through its developer program rather than public package registries;
+  no first-party DOOR/Latch package was found on npm, PyPI, Maven Central, NuGet,
+  pkg.go.dev, RubyGems, Packagist, or crates.io. The @opendoor/* npm packages
+  belong to Opendoor (the real-estate iBuyer) and are NOT first-party to door.com.
+  The libraries below are the officially documented OpenDOOR SDKs.
+packages:
+- language: swift
+  platform: ios
+  registry: vendor
+  name: OpenDOOR iOS SDK
+  url: https://developers.door.com/docs/ios-docs.md
+  official: true
+  description: Native iOS SDK to view, unlock, and sync DOOR-supported locks and manage guest access.
+- language: kotlin
+  platform: android
+  registry: vendor
+  name: OpenDOOR Android SDK
+  url: https://developers.door.com/docs/android-docs.md
+  official: true
+  description: Native Android SDK to view, unlock, and sync DOOR-supported locks and manage guest access (v2.2).
+- language: javascript
+  platform: web
+  registry: vendor
+  name: OpenDOOR Web SDK
+  url: https://developers.door.com/docs/web-sdk.md
+  official: true
+  description: Web SDK to retrieve the doors a user can unlock and display available door codes.

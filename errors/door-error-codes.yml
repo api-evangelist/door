@@ -1,0 +1,53 @@
+generated: '2026-07-18'
+method: searched
+source: openapi/door-partner-openapi.json (BadRequestError enum), https://developers.door.com/docs/partner-backend.md
+envelope:
+  field: message
+  content_type: application/json
+notes: >-
+  Registry of documented error codes returned in the `message` field. The 400 validation codes
+  are enumerated in the OpenDOOR Partner API spec (BadRequestError). The passwordless/auth codes
+  are documented on the Partner Backend page and are returned by the Auth0 auth host with
+  `error`/`error_description` fields.
+partner_api_400_codes:
+- code: BUILDING_UUID_REQUIRED
+  area: access
+- code: EMAIL_AND_PHONE_PROVIDED
+  area: access
+- code: EMAIL_CAN_NOT_BE_EMPTY
+  area: access
+- code: EMAIL_OR_PHONE_REQUIRED
+  area: access
+- code: EMAIL_REQUIRED_FOR_PERMANENT
+  area: access
+- code: END_TIME_NOT_SUPPORTED
+  area: access
+- code: INVALID_END_TIME
+  area: access
+- code: INVALID_PHONE
+  area: access
+- code: INVALID_START_TIME
+  area: access
+- code: MISSING_END_TIME
+  area: access
+- code: PASSCODE_TYPE_CANT_BE_REVOKED
+  area: access
+- code: USER_CAN_NOT_SHARE
+  area: access
+auth_codes:
+- code: bad.email
+  http: 400
+  meaning: Missing email parameter.
+  action: Ensure all fields are populated in the passwordless/start request.
+- code: extensibility_error / UNAUTHORIZED
+  http: 400
+  meaning: Email account is not authorized or does not exist.
+  action: Confirm the email is configured in DOOR OS or provisioned via the OpenDOOR API.
+- code: extensibility_error / USER_ACCOUNT_NOT_ACTIVE
+  http: 400
+  meaning: Email account exists but is not active.
+  action: Contact DOOR Support to check account status.
+- code: unauthorized_client
+  http: 403
+  meaning: Missing or invalid client credentials.
+  action: Verify client_id and client_secret values.

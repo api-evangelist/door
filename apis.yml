@@ -1,20 +1,110 @@
 aid: door
 name: Door
-description: Door is a company surfaced as a portfolio company of techstars and added to the API Evangelist
-  network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: >-
+  DOOR (formerly Latch) is a multifamily proptech company providing a smart-building access and
+  building-intelligence platform. It unifies smart locks, readers, intercoms, cameras, thermostats
+  and sensors with software (DOOR OS) for property managers, and integrates with property-management
+  systems such as Yardi, RealPage, Entrata, and AppFolio. DOOR exposes its capabilities to authorized
+  partners through OpenDOOR - a set of REST APIs plus native iOS, Android, and Web SDKs - letting
+  partner apps enumerate buildings, doors, keys, and users and grant, update, or revoke resident
+  access. The API is secured with Auth0-issued JWTs (partner-scoped machine-to-machine and user-scoped
+  passwordless tokens). This profile was enriched by the API Evangelist pipeline from DOOR's public
+  developer hub at developers.door.com.
 url: https://raw.githubusercontent.com/api-evangelist/door/refs/heads/main/apis.yml
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://cdn.prod.website-files.com/6838ad705264e74df1653563/683f3efb468620cdf85dd643_door-logo-webclip.png
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - techstars
-x-tier: stub
-x-tier-reason: portfolio-lead
+x-tier: enriched
+x-tier-reason: developer-hub-openapi
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-18'
 tags:
 - Company
-apis: []
+- Access Control
+- Smart Building
+- Proptech
+- Physical Security
+- IoT
+- Multifamily
+- Real Estate
+- Smart Lock
+- Building Automation
+apis:
+- aid: door:door-access-management-api
+  name: Door Access Management API
+  description: User access management operations
+  humanURL: https://developers.door.com/reference
+  baseURL: https://rest.latchaccess.com/access/sdk
+  tags:
+  - Access Management
+  properties:
+  - type: OpenAPI
+    url: openapi/door-access-management-api-openapi.yml
+- aid: door:door-buildings-api
+  name: Door Buildings API
+  description: Building operations
+  humanURL: https://developers.door.com/reference
+  baseURL: https://rest.latchaccess.com/access/sdk
+  tags:
+  - Buildings
+  properties:
+  - type: OpenAPI
+    url: openapi/door-buildings-api-openapi.yml
+- aid: door:door-doors-and-keys-api
+  name: Door Doors and Keys API
+  description: Door/Key and key operations
+  humanURL: https://developers.door.com/reference
+  baseURL: https://rest.latchaccess.com/access/sdk
+  tags:
+  - Doors and Keys
+  properties:
+  - type: OpenAPI
+    url: openapi/door-doors-and-keys-api-openapi.yml
+- aid: door:door-partner-authentication-api
+  name: Door Partner Authentication API
+  description: Partner authentication operations
+  humanURL: https://developers.door.com/reference
+  baseURL: https://rest.latchaccess.com/access/sdk
+  tags:
+  - Partner Authentication
+  properties:
+  - type: OpenAPI
+    url: openapi/door-partner-authentication-api-openapi.yml
+- aid: door:door-user-authentication-api
+  name: Door User Authentication API
+  description: User authentication operations
+  humanURL: https://developers.door.com/reference
+  baseURL: https://rest.latchaccess.com/access/sdk
+  tags:
+  - User Authentication
+  properties:
+  - type: OpenAPI
+    url: openapi/door-user-authentication-api-openapi.yml
+- aid: door:door-users-api
+  name: Door Users API
+  description: User operations
+  humanURL: https://developers.door.com/reference
+  baseURL: https://rest.latchaccess.com/access/sdk
+  tags:
+  - Users
+  properties:
+  - type: OpenAPI
+    url: openapi/door-users-api-openapi.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -23,3 +113,69 @@ maintainers:
 common:
 - type: Website
   url: https://door.com/
+- type: DeveloperPortal
+  url: https://developers.door.com/
+- type: Documentation
+  url: https://developers.door.com/docs
+- type: APIReference
+  url: https://developers.door.com/reference
+- type: GettingStarted
+  url: https://developers.door.com/docs
+- type: Support
+  url: https://support.door.com/hc/en-us
+- type: Blog
+  url: https://door.com/articles
+- type: SignUp
+  url: https://app.door.com
+- type: Login
+  url: https://app.door.com
+- type: TermsOfService
+  url: https://door.com/policy/terms-of-service
+- type: PrivacyPolicy
+  url: https://door.com/policy/privacy
+- type: StatusPage
+  url: https://status.latch.com
+- type: Deprecation
+  url: https://developers.door.com/docs/migrating-from-latch-sdk-v1-to-opendoor-sdk-v2.md
+- type: Authentication
+  url: authentication/door-authentication.yml
+- type: Conventions
+  url: conventions/door-conventions.yml
+- type: ErrorCatalog
+  url: errors/door-problem-types.yml
+- type: ErrorCatalog
+  name: Error code registry
+  url: errors/door-error-codes.yml
+- type: Lifecycle
+  url: lifecycle/door-lifecycle.yml
+- type: Conformance
+  url: conformance/door-conformance.yml
+- type: DataModel
+  url: data-model/door-data-model.yml
+- type: Packages
+  url: packages/door-packages.yml
+- type: SDKs
+  url: packages/door-packages.yml
+- type: MCPServer
+  url: mcp/door-mcp.yml
+- type: LLMsTxt
+  url: llms/door-llms.txt
+- type: WellKnown
+  url: well-known/door-well-known.yml
+- type: Overlay
+  url: overlays/door-partner-overlay.yaml
+- type: DomainSecurity
+  url: security/door-domain-security.yml
+- type: AgenticAccess
+  url: agentic-access/door-agentic-access.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: Sandbox
+  url: sandbox/door-sandbox.yml
+- type: ChangeLog
+  url: changelog/door-changelog.yml
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence

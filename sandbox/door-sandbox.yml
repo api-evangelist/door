@@ -1,0 +1,29 @@
+generated: '2026-07-18'
+method: searched
+source: https://developers.door.com/docs/environments.md, https://developers.door.com/docs/supported-devices.md
+model: provisioned-sandbox
+environments:
+- name: production
+  detail: >-
+    OpenDOOR currently offers a single production environment for partners, providing both
+    authentication and device services. Partners are expected to exercise best practices to keep
+    traffic to reasonable levels; traffic is aggressively monitored and rate-limited.
+sandbox:
+  detail: >-
+    DOOR prepares a dedicated sandbox property and provides partners a specific set of physical
+    devices that can be operated within the production environment for app development and SDK
+    implementation/testing. There is no separate self-serve sandbox host; test resources are
+    DOOR-provisioned per partner.
+  self_serve: false
+  provisioned_by: DOOR
+test_values:
+  published: false
+  detail: >-
+    No public magic/test identifiers, test cards, or hosted test tokens are published. Test doors,
+    keys, and user accounts are provisioned by DOOR in the partner's sandbox property.
+supported_test_devices:
+- C1
+- M
+- C2
+- R2
+test_guidance: https://developers.door.com/docs/test-scenarios.md

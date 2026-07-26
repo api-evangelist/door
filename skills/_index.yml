@@ -1,0 +1,12 @@
+generated: '2026-07-18'
+method: generated
+source: openapi/door-partner-openapi.json, openapi/door-authentication-openapi.json
+skills:
+- file: door-grant-resident-access.md
+  name: Grant a resident access to doors
+  api: openapi/door-partner-openapi.json
+  operations: [authenticatePartner, listBuildings, listDoors, listKeys, grantAccessToUserV2]
+- file: door-audit-and-revoke-access.md
+  name: Audit and revoke resident access
+  api: openapi/door-partner-openapi.json
+  operations: [authenticatePartner, listBuildings, listBuildingResidents, listKeyAccesses, getUser, updateUserAccess, revokeUserAccess]

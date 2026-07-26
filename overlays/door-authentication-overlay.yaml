@@ -1,0 +1,12 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for DOOR Authentication API
+  version: 1.0.0
+extends: openapi/door-authentication-openapi.json
+actions:
+- target: $.info
+  update:
+    x-apievangelist-provider: door
+    x-apievangelist-idp: Auth0 (auth.prod.latch.com)
+    x-apievangelist-flows: [clientCredentials (partner M2M), passwordless (user-scoped)]
+    x-apievangelist-openid-configuration: well-known/door-openid-configuration.json

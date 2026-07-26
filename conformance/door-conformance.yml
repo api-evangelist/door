@@ -1,0 +1,28 @@
+generated: '2026-07-18'
+method: derived
+source: openapi/door-partner-openapi.json, openapi/door-authentication-openapi.json, well-known/door-openid-configuration.json
+standards:
+- id: oauth2
+  conforms: true
+  evidence: Auth0 client_credentials (partner M2M) and passwordless flows; token endpoint at auth.prod.latch.com/oauth/token.
+- id: oidc
+  conforms: true
+  evidence: /.well-known/openid-configuration served by the Auth0 issuer (auth.prod.latch.com).
+- id: jwt-bearer
+  conforms: true
+  evidence: Partner API secured with http bearer JWT (bearerAuth); jwks_uri published.
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: Errors use a custom {message code} envelope (application/json), not application/problem+json.
+- id: cursor-pagination
+  conforms: true
+  evidence: List endpoints use pageSize + pageToken query parameters.
+- id: idempotency
+  conforms: false
+  evidence: No idempotency-key mechanism documented.
+- id: fapi
+  conforms: false
+- id: scim
+  conforms: false
+- id: fhir
+  conforms: false
