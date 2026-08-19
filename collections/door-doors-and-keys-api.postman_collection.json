@@ -1,0 +1,734 @@
+{
+  "item": [
+    {
+      "id": "f02969b4-587e-48ff-a358-e65a36791883",
+      "name": "Doors and Keys",
+      "description": {
+        "content": "Door/Key and key operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6845ca68-8baf-4729-ab26-a73009cbbb6d",
+          "name": "List Doors",
+          "request": {
+            "name": "List Doors",
+            "description": {
+              "content": "Get a DOOR partner's list of doors/keys",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "doors"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "<integer>",
+                  "description": "Max number of doors/keys to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageToken",
+                  "value": "<string>",
+                  "description": "The token of page to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "buildingUuid",
+                  "value": "<uuid>",
+                  "description": "Building UUID for filtering doors/keys"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET"
+          },
+          "response": [
+            {
+              "id": "107a5a1d-afee-47a2-b33d-f0cfa6c05716",
+              "name": "Successfully retrieved list of doors/keys",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "doors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "buildingUuid",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"doors\": [\n    {\n      \"buildingUuid\": \"d2a4886f-d6b0-19b9-29f6-923b7d12fd8c\",\n      \"name\": \"string\",\n      \"type\": \"DOOR\",\n      \"uuid\": \"df64c071-7083-112b-05b3-e56704d1ebf6\",\n      \"accessibilityType\": \"PRIVATE\",\n      \"device\": {\n        \"battery\": {\n          \"lastUpdated\": 1737137633,\n          \"percentage\": 92\n        },\n        \"serialNumber\": \"string\",\n        \"type\": \"C\"\n      },\n      \"isConnected\": false,\n      \"sdkDoorUuid\": \"84b0275e-457b-e43e-68e2-61ca437a253d\"\n    },\n    {\n      \"buildingUuid\": \"e401c6c2-9f91-aa44-6fa8-9b044fac8e48\",\n      \"name\": \"string\",\n      \"type\": \"ELEVATOR\",\n      \"uuid\": \"096a8e65-aee6-f865-7685-e30351fb81f3\",\n      \"accessibilityType\": \"PRIVATE\",\n      \"device\": {\n        \"battery\": {\n          \"lastUpdated\": 1737137633,\n          \"percentage\": 92\n        },\n        \"serialNumber\": \"string\",\n        \"type\": \"C\"\n      },\n      \"isConnected\": false,\n      \"sdkDoorUuid\": \"ac276b67-aeb3-d3a6-8624-733e3b093162\"\n    }\n  ],\n  \"nextPageToken\": \"1\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3995a8f8-2152-45c1-b150-4f529ff1f4e6",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "doors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "buildingUuid",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"END_TIME_NOT_SUPPORTED\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b7e34813-bfc2-4ed7-b250-57a77c391925",
+              "name": "Invalid authorization token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "doors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "buildingUuid",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"UNAUTHORIZED\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ed44c0e2-527a-4d7d-8629-501ae8ababc8",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "doors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "buildingUuid",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "093df755-26c7-4665-b8a8-f5727fc6da01",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "doors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "buildingUuid",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "058a0f81-2857-4143-89a2-749a5b7f6c55",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "doors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "buildingUuid",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"INTERNAL_SERVER_ERROR\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ae5ad2f4-fbb8-42cd-bb33-4f23f55fb9ef",
+          "name": "List Keys",
+          "request": {
+            "name": "List Keys",
+            "description": {
+              "content": "Get a DOOR partner's list of keys for a building",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "keys"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "<integer>",
+                  "description": "Max number of keys to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageToken",
+                  "value": "<string>",
+                  "description": "The token of page to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "buildingUuid",
+                  "value": "<uuid>",
+                  "description": "Building UUID for filtering keys"
+                },
+                {
+                  "disabled": false,
+                  "key": "includeDoors",
+                  "value": "<boolean>",
+                  "description": "When true, each key in the response includes the list of doors/keys it grants access to. Defaults to false."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET"
+          },
+          "response": [
+            {
+              "id": "1b864166-a1c9-4a60-a4fb-659052de29fd",
+              "name": "Successfully retrieved list of keys",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "keys"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "buildingUuid",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "includeDoors",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"keys\": [\n    {\n      \"name\": \"string\",\n      \"uuid\": \"eda5407d-1ef9-afe6-da17-d53b76d382e1\",\n      \"accountUuid\": \"9ec82eb8-f66a-f234-28a0-98f95c12cc0b\",\n      \"buildingUuid\": \"7ef84c8e-18c1-e42c-3b53-95d64e82d481\",\n      \"doors\": [\n        {\n          \"name\": \"string\",\n          \"sdkDoorUuid\": \"63949813-c7b9-6d5a-a289-34f9d55c0a6e\",\n          \"type\": \"RESIDENCE\"\n        },\n        {\n          \"name\": \"string\",\n          \"sdkDoorUuid\": \"10e19a84-d860-e12c-def4-9d0af950a57a\",\n          \"type\": \"SERVICE\"\n        }\n      ],\n      \"doorsType\": \"ELEVATOR\",\n      \"endTime\": \"2011-12-07T14:40:40.145Z\",\n      \"keyType\": \"REGULAR\",\n      \"startTime\": \"1989-07-18T15:47:35.771Z\"\n    },\n    {\n      \"name\": \"string\",\n      \"uuid\": \"e6ee5ba9-ce1c-c597-130b-d3b7f54bfa2f\",\n      \"accountUuid\": \"34169c06-74bd-fb61-9c47-9ce25edba9ea\",\n      \"buildingUuid\": \"f04d5dc5-d699-6724-6858-7a276e753b1f\",\n      \"doors\": [\n        {\n          \"name\": \"string\",\n          \"sdkDoorUuid\": \"5a5c6b30-2fdd-b9c5-18c3-6dec13bfaaf8\",\n          \"type\": \"COMMUNAL\"\n        },\n        {\n          \"name\": \"string\",\n          \"sdkDoorUuid\": \"78e645dd-707a-88fb-c5fe-84e94ac9a8c5\",\n          \"type\": \"COMMUNAL\"\n        }\n      ],\n      \"doorsType\": \"ELEVATOR\",\n      \"endTime\": \"1969-08-19T02:38:45.967Z\",\n      \"keyType\": \"REGULAR\",\n      \"startTime\": \"2010-11-17T07:28:14.811Z\"\n    }\n  ],\n  \"nextPageToken\": \"1\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "71e4b629-1208-4c40-80f9-134473dafa02",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "keys"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "buildingUuid",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "includeDoors",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"END_TIME_NOT_SUPPORTED\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6ef1a00a-6fea-48fc-883e-6c9592bc9876",
+              "name": "Invalid authorization token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "keys"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "buildingUuid",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "includeDoors",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"UNAUTHORIZED\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c618f203-341b-45e9-bf6d-bf102892aac8",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "keys"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "buildingUuid",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "includeDoors",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0ba2e740-5b78-406b-975c-1da9d469bae7",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "keys"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "buildingUuid",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "includeDoors",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fd2a6c52-c927-46fd-9e26-dfc709f96c73",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "keys"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "buildingUuid",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "includeDoors",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"INTERNAL_SERVER_ERROR\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://auth.prod.latch.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "a5670fb2-9fc8-46d9-a53f-2e3a7b30c041",
+    "name": "Authentication Access Management Doors and Keys API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Authentication",
+      "type": "text/plain"
+    }
+  }
+}

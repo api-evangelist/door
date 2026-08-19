@@ -2,12 +2,10 @@ generated: '2026-07-18'
 method: derived
 status: candidate
 source: openapi/door-partner-openapi.json
-notes: >-
-  No official hosted/remote MCP server was found for DOOR/OpenDOOR. This is a
-  candidate tool list derived one-to-one from the OpenDOOR Partner API operations.
-  Access-mutating tools (grant/revoke access) map to physical door actuation and
-  should be gated behind human confirmation and short-lived, purpose-scoped tokens
-  (see agentic-access/door-agentic-access.yml).
+notes: No official hosted/remote MCP server was found for DOOR/OpenDOOR. This is a candidate tool list
+  derived one-to-one from the OpenDOOR Partner API operations. Access-mutating tools (grant/revoke access)
+  map to physical door actuation and should be gated behind human confirmation and short-lived, purpose-scoped
+  tokens (see agentic-access/door-agentic-access.yml).
 server:
   name: door
   transport: http
@@ -37,7 +35,8 @@ tools:
   description: Create a DOOR user and grant access to doors/keys (physical access - gate behind confirmation)
   source_operation: openapi/door-partner-openapi.json#grantAccessToUser
 - name: grant_access_to_user_v2
-  description: Create a DOOR user and grant access to doors/keys, richer response (physical access - gate behind confirmation)
+  description: Create a DOOR user and grant access to doors/keys, richer response (physical access - gate
+    behind confirmation)
   source_operation: openapi/door-partner-openapi.json#grantAccessToUserV2
 - name: update_user_access
   description: Update user access to the given door/key (physical access - gate behind confirmation)
@@ -45,3 +44,9 @@ tools:
 - name: revoke_user_access
   description: Revoke user access to the given door/key (physical access - gate behind confirmation)
   source_operation: openapi/door-partner-openapi.json#revokeUserAccess
+deployment:
+  mode: none
+  verified: derived
+  tools: 11
+  checked: '2026-08-12'
+  source: catalog MCP census

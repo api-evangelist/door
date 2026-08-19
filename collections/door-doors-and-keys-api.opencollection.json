@@ -1,0 +1,86 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Authentication Access Management Doors and Keys API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Doors and Keys",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Doors",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://auth.prod.latch.com/v1/doors",
+            "params": [
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Max number of doors/keys to return"
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query",
+                "description": "The token of page to return"
+              },
+              {
+                "name": "buildingUuid",
+                "value": "",
+                "type": "query",
+                "description": "Building UUID for filtering doors/keys"
+              }
+            ]
+          },
+          "docs": "Get a DOOR partner's list of doors/keys"
+        },
+        {
+          "info": {
+            "name": "List Keys",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://auth.prod.latch.com/v1/keys",
+            "params": [
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Max number of keys to return"
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query",
+                "description": "The token of page to return"
+              },
+              {
+                "name": "buildingUuid",
+                "value": "",
+                "type": "query",
+                "description": "Building UUID for filtering keys"
+              },
+              {
+                "name": "includeDoors",
+                "value": "",
+                "type": "query",
+                "description": "When true, each key in the response includes the list of doors/keys it grants access to. Defaults to false."
+              }
+            ]
+          },
+          "docs": "Get a DOOR partner's list of keys for a building"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

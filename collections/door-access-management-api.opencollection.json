@@ -1,0 +1,121 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Authentication Access Management API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Access Management",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Grant Access to User",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://auth.prod.latch.com/v1/users",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create DOOR user and grant access to doors/keys"
+        },
+        {
+          "info": {
+            "name": "Grant Access to User V2",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://auth.prod.latch.com/v2/users",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create DOOR user and grant access to doors/keys. Returns a richer response than V1."
+        },
+        {
+          "info": {
+            "name": "List Accesses By Key",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://auth.prod.latch.com/v1/keys/:keyUuid/accesses",
+            "params": [
+              {
+                "name": "keyUuid",
+                "value": "",
+                "type": "path",
+                "description": "UUID of the key to get accesses for."
+              }
+            ]
+          },
+          "docs": "Get all accesses on a key for a DOOR partner"
+        },
+        {
+          "info": {
+            "name": "Update User Access",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://auth.prod.latch.com/v1/users/:userUuid/doors/:doorUuid",
+            "params": [
+              {
+                "name": "userUuid",
+                "value": "",
+                "type": "path",
+                "description": "UUID of the user that we want to update access for."
+              },
+              {
+                "name": "doorUuid",
+                "value": "",
+                "type": "path",
+                "description": "UUID of door/key we want to update access for."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update user access to the given door/key."
+        },
+        {
+          "info": {
+            "name": "Revoke User Access",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://auth.prod.latch.com/v1/users/:userUuid/doors/:doorUuid",
+            "params": [
+              {
+                "name": "userUuid",
+                "value": "",
+                "type": "path",
+                "description": "UUID of the user that we want to revoke access to."
+              },
+              {
+                "name": "doorUuid",
+                "value": "",
+                "type": "path",
+                "description": "UUID of door/key we want to revoke access to."
+              }
+            ]
+          },
+          "docs": "Revoke user access to the given door/key."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

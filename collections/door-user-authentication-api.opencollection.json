@@ -1,0 +1,63 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Authentication Access Management User Authentication API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "User Authentication",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Complete Authentication",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://auth.prod.latch.com/v1/oauth/token#passwordless",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Passwordless Authorization endpoint"
+        },
+        {
+          "info": {
+            "name": "Refresh Token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://auth.prod.latch.com/v1/oauth/token#refresh",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Auth0 token refresh endpoint"
+        },
+        {
+          "info": {
+            "name": "Start Passwordless Login",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://auth.prod.latch.com/passwordless/start",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Passwordless Authorization start endpoint"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

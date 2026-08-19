@@ -1,0 +1,93 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Authentication Access Management Users API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Users",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get User",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://auth.prod.latch.com/v1/users/:userUuid",
+            "params": [
+              {
+                "name": "userUuid",
+                "value": "",
+                "type": "path",
+                "description": "UUID of the user to fetch."
+              }
+            ]
+          },
+          "docs": "Get a single user for a DOOR partner"
+        },
+        {
+          "info": {
+            "name": "List Users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://auth.prod.latch.com/v1/users",
+            "params": [
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Max number of users to return"
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query",
+                "description": "The token of page to return"
+              }
+            ]
+          },
+          "docs": "Get a DOOR partner's list of users"
+        },
+        {
+          "info": {
+            "name": "List Building Residents",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://auth.prod.latch.com/v1/buildings/:buildingUuid/residents",
+            "params": [
+              {
+                "name": "buildingUuid",
+                "value": "",
+                "type": "path",
+                "description": "UUID of the building"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Max number of residents to return"
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query",
+                "description": "The token of page to return"
+              }
+            ]
+          },
+          "docs": "Get residents based on active key memberships in a building."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

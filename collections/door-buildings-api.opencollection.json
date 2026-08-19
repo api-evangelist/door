@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Authentication Access Management Buildings API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Buildings",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Buildings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://auth.prod.latch.com/v1/buildings"
+          },
+          "docs": "Get a DOOR partner's list of buildings"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

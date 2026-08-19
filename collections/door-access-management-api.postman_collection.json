@@ -1,0 +1,1870 @@
+{
+  "item": [
+    {
+      "id": "cf099dbb-ddec-4350-bb6f-ca499d889a8b",
+      "name": "Access Management",
+      "description": {
+        "content": "User access management operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3fc6253e-eb10-4dff-a9e6-2135a7e56a5b",
+          "name": "Grant Access to User",
+          "request": {
+            "name": "Grant Access to User",
+            "description": {
+              "content": "Create DOOR user and grant access to doors/keys",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"passcodeType\": \"<string>\",\n  \"shareable\": \"<boolean>\",\n  \"startTime\": \"<dateTime>\",\n  \"doorUuids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"keyUuids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"email\": \"<string>\",\n  \"endTime\": \"<dateTime>\",\n  \"phone\": \"<string>\",\n  \"role\": \"<string>\",\n  \"shouldNotify\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "52889d0a-7a9d-44ed-a7c2-1ace5cf80ab4",
+              "name": "Successfully created user",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"passcodeType\": \"<string>\",\n  \"shareable\": false,\n  \"startTime\": \"<dateTime>\",\n  \"doorUuids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"keyUuids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"email\": \"<string>\",\n  \"endTime\": \"<dateTime>\",\n  \"phone\": \"<string>\",\n  \"role\": \"<string>\",\n  \"shouldNotify\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"doors\": [\n    {\n      \"buildingUuid\": \"6b6ca829-dfde-42a0-7193-1b9f3bb3028e\",\n      \"name\": \"string\",\n      \"type\": \"ELEVATOR\",\n      \"uuid\": \"1279196f-d100-a96c-cc44-dd99677d1654\",\n      \"accessibilityType\": \"PRIVATE\",\n      \"device\": {\n        \"battery\": {\n          \"lastUpdated\": 1737137633,\n          \"percentage\": 92\n        },\n        \"serialNumber\": \"string\",\n        \"type\": \"C\"\n      },\n      \"isConnected\": false,\n      \"sdkDoorUuid\": \"63b72eff-a4c8-667d-8bdf-0fe2a43cfe4a\"\n    },\n    {\n      \"buildingUuid\": \"07671e9a-9cfb-6f57-a2e4-51f42ada89d4\",\n      \"name\": \"string\",\n      \"type\": \"ELEVATOR\",\n      \"uuid\": \"e0bdf5c6-3e95-6db8-e76f-fe4fe87a805f\",\n      \"accessibilityType\": \"COMMUNAL\",\n      \"device\": {\n        \"battery\": {\n          \"lastUpdated\": 1737137633,\n          \"percentage\": 92\n        },\n        \"serialNumber\": \"string\",\n        \"type\": \"C\"\n      },\n      \"isConnected\": false,\n      \"sdkDoorUuid\": \"9fd3d4d8-c866-8be0-a2c5-8bcf7eb00f0a\"\n    }\n  ],\n  \"userUuid\": \"05051048-c96a-554a-93da-dbdbef33bcbe\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "11074856-d14b-4a26-961f-dc19c30494cc",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"passcodeType\": \"<string>\",\n  \"shareable\": false,\n  \"startTime\": \"<dateTime>\",\n  \"doorUuids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"keyUuids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"email\": \"<string>\",\n  \"endTime\": \"<dateTime>\",\n  \"phone\": \"<string>\",\n  \"role\": \"<string>\",\n  \"shouldNotify\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a92126af-b0c1-4b7e-812b-c991f3a9d1f3",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"passcodeType\": \"<string>\",\n  \"shareable\": false,\n  \"startTime\": \"<dateTime>\",\n  \"doorUuids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"keyUuids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"email\": \"<string>\",\n  \"endTime\": \"<dateTime>\",\n  \"phone\": \"<string>\",\n  \"role\": \"<string>\",\n  \"shouldNotify\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"EMAIL_REQUIRED_FOR_PERMANENT\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ce91d89e-f2ab-4853-912a-f5736f0ee7ab",
+              "name": "Invalid authorization token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"passcodeType\": \"<string>\",\n  \"shareable\": false,\n  \"startTime\": \"<dateTime>\",\n  \"doorUuids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"keyUuids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"email\": \"<string>\",\n  \"endTime\": \"<dateTime>\",\n  \"phone\": \"<string>\",\n  \"role\": \"<string>\",\n  \"shouldNotify\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"UNAUTHORIZED\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9cc7a136-14e0-4527-8436-10da5be1de84",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"passcodeType\": \"<string>\",\n  \"shareable\": false,\n  \"startTime\": \"<dateTime>\",\n  \"doorUuids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"keyUuids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"email\": \"<string>\",\n  \"endTime\": \"<dateTime>\",\n  \"phone\": \"<string>\",\n  \"role\": \"<string>\",\n  \"shouldNotify\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5f333929-4e9a-4448-aebb-83d3d9a3a641",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"passcodeType\": \"<string>\",\n  \"shareable\": false,\n  \"startTime\": \"<dateTime>\",\n  \"doorUuids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"keyUuids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"email\": \"<string>\",\n  \"endTime\": \"<dateTime>\",\n  \"phone\": \"<string>\",\n  \"role\": \"<string>\",\n  \"shouldNotify\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "abee3e39-7108-449f-9a56-c107d0e21508",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"passcodeType\": \"<string>\",\n  \"shareable\": false,\n  \"startTime\": \"<dateTime>\",\n  \"doorUuids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"keyUuids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"email\": \"<string>\",\n  \"endTime\": \"<dateTime>\",\n  \"phone\": \"<string>\",\n  \"role\": \"<string>\",\n  \"shouldNotify\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"INTERNAL_SERVER_ERROR\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a848b7f7-d3c0-405e-bead-8dc36c10106d",
+          "name": "Grant Access to User V2",
+          "request": {
+            "name": "Grant Access to User V2",
+            "description": {
+              "content": "Create DOOR user and grant access to doors/keys. Returns a richer response than V1.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"passcodeType\": \"<string>\",\n  \"shareable\": \"<boolean>\",\n  \"startTime\": \"<dateTime>\",\n  \"doorUuids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"keyUuids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"email\": \"<string>\",\n  \"endTime\": \"<dateTime>\",\n  \"phone\": \"<string>\",\n  \"role\": \"<string>\",\n  \"shouldNotify\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3652e538-0c1a-4e3f-923c-957d661195ca",
+              "name": "Successfully created user",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"passcodeType\": \"<string>\",\n  \"shareable\": false,\n  \"startTime\": \"<dateTime>\",\n  \"doorUuids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"keyUuids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"email\": \"<string>\",\n  \"endTime\": \"<dateTime>\",\n  \"phone\": \"<string>\",\n  \"role\": \"<string>\",\n  \"shouldNotify\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"email\": \"john.smith@example.com\",\n  \"firstName\": \"John\",\n  \"lastName\": \"Smith\",\n  \"userUuid\": \"8ff8ad73-7503-2d1b-705f-d24f0c370414\",\n  \"accesses\": [\n    {\n      \"doorUuid\": \"db169e32-a1ac-3b56-8b91-575ccdaba4d2\",\n      \"endTime\": \"1975-04-25T00:18:54.582Z\",\n      \"granter\": {\n        \"type\": \"USER\",\n        \"uuid\": \"dfd24cec-24a6-b930-7df2-a338a876e69a\"\n      },\n      \"passcodeType\": \"DAILY_SINGLE_USE\",\n      \"shareable\": false,\n      \"startTime\": \"1976-09-01T22:56:28.270Z\",\n      \"doorcode\": {\n        \"code\": \"1234567\",\n        \"description\": \"USER_HAS_RESIDENT_ACCESS\"\n      },\n      \"role\": \"TOURER\",\n      \"sdkDoorUuid\": \"88cca4c0-1820-00ec-3b02-e26891a81ed4\",\n      \"userUuid\": \"3ab9b03d-5a14-aafb-3d85-da299bd9ec75\"\n    },\n    {\n      \"doorUuid\": \"68f2bc5c-dc69-4a6f-4391-d7af2784c73c\",\n      \"endTime\": \"1957-08-05T13:12:47.882Z\",\n      \"granter\": {\n        \"type\": \"PARTNER\",\n        \"uuid\": \"b8ebd326-c9ff-6e79-2880-a048a12c7385\"\n      },\n      \"passcodeType\": \"DAILY\",\n      \"shareable\": false,\n      \"startTime\": \"2015-10-12T21:42:09.961Z\",\n      \"doorcode\": {\n        \"code\": \"1234567\",\n        \"description\": \"COMMUNAL_DOORCODE_CONFLICT\"\n      },\n      \"role\": \"GUEST\",\n      \"sdkDoorUuid\": \"0cc26d25-5775-2a64-5f4a-192029f17a0f\",\n      \"userUuid\": \"df25002f-6f98-429d-6e57-8b447c97099b\"\n    }\n  ],\n  \"phone\": \"+1-111-111-1111\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2103ea1f-ba20-4246-af49-195652582af5",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"passcodeType\": \"<string>\",\n  \"shareable\": false,\n  \"startTime\": \"<dateTime>\",\n  \"doorUuids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"keyUuids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"email\": \"<string>\",\n  \"endTime\": \"<dateTime>\",\n  \"phone\": \"<string>\",\n  \"role\": \"<string>\",\n  \"shouldNotify\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2a9918eb-57b0-4c23-8d40-0fdd2676c604",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"passcodeType\": \"<string>\",\n  \"shareable\": false,\n  \"startTime\": \"<dateTime>\",\n  \"doorUuids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"keyUuids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"email\": \"<string>\",\n  \"endTime\": \"<dateTime>\",\n  \"phone\": \"<string>\",\n  \"role\": \"<string>\",\n  \"shouldNotify\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"EMAIL_REQUIRED_FOR_PERMANENT\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f7060b9e-da11-4ba7-9981-dfa7b902d0fe",
+              "name": "Invalid authorization token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"passcodeType\": \"<string>\",\n  \"shareable\": false,\n  \"startTime\": \"<dateTime>\",\n  \"doorUuids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"keyUuids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"email\": \"<string>\",\n  \"endTime\": \"<dateTime>\",\n  \"phone\": \"<string>\",\n  \"role\": \"<string>\",\n  \"shouldNotify\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"UNAUTHORIZED\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "95434494-a68d-40eb-92bd-e6f405d4158b",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"passcodeType\": \"<string>\",\n  \"shareable\": false,\n  \"startTime\": \"<dateTime>\",\n  \"doorUuids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"keyUuids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"email\": \"<string>\",\n  \"endTime\": \"<dateTime>\",\n  \"phone\": \"<string>\",\n  \"role\": \"<string>\",\n  \"shouldNotify\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7d92a6c7-bc58-427e-850f-c7c13f7779af",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"passcodeType\": \"<string>\",\n  \"shareable\": false,\n  \"startTime\": \"<dateTime>\",\n  \"doorUuids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"keyUuids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"email\": \"<string>\",\n  \"endTime\": \"<dateTime>\",\n  \"phone\": \"<string>\",\n  \"role\": \"<string>\",\n  \"shouldNotify\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7619ecb5-be19-4e6d-ae46-26e67c0bf902",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"passcodeType\": \"<string>\",\n  \"shareable\": false,\n  \"startTime\": \"<dateTime>\",\n  \"doorUuids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"keyUuids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"email\": \"<string>\",\n  \"endTime\": \"<dateTime>\",\n  \"phone\": \"<string>\",\n  \"role\": \"<string>\",\n  \"shouldNotify\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"INTERNAL_SERVER_ERROR\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cda3ca45-b96e-415c-9dd4-1bdf34b21f8c",
+          "name": "List Accesses By Key",
+          "request": {
+            "name": "List Accesses By Key",
+            "description": {
+              "content": "Get all accesses on a key for a DOOR partner",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "keys",
+                ":keyUuid",
+                "accesses"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "keyUuid",
+                  "description": "(Required) UUID of the key to get accesses for."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET"
+          },
+          "response": [
+            {
+              "id": "b0489254-61fd-4fe1-b25c-fa9945d91947",
+              "name": "Successfully retrieved key accesses",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "keys",
+                    ":keyUuid",
+                    "accesses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "keyUuid",
+                      "description": "(Required) UUID of the key to get accesses for."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"accesses\": [\n    {\n      \"doors\": [\n        {\n          \"sdkDoorUuid\": \"abe0d7a3-605f-8baa-041c-043e1bf36c41\",\n          \"doorcode\": {\n            \"code\": \"1234567\",\n            \"description\": \"USER_HAS_GUEST_ACCESS_CONFLICT\"\n          }\n        },\n        {\n          \"sdkDoorUuid\": \"bb00725f-c2a7-b8e8-4332-c13f5e086db2\",\n          \"doorcode\": {\n            \"code\": \"1234567\",\n            \"description\": \"USER_HAS_RESIDENT_ACCESS\"\n          }\n        }\n      ],\n      \"granter\": {\n        \"type\": \"USER\",\n        \"uuid\": \"f253476a-574a-8be9-569a-a7d90d5c9292\"\n      },\n      \"keyUuid\": \"1d5dc990-a591-b970-40c2-116e670c3568\",\n      \"passcodeType\": \"PERMANENT\",\n      \"shareable\": false,\n      \"startTime\": \"2004-10-12T10:58:56.393Z\",\n      \"userUuid\": \"7ec74567-b77e-7712-4e47-aa7a3d50c8f3\",\n      \"endTime\": \"1959-03-10T08:48:01.920Z\",\n      \"role\": \"NON_RESIDENT\"\n    },\n    {\n      \"doors\": [\n        {\n          \"sdkDoorUuid\": \"2b06b8e9-1217-297a-272a-f235e15489d7\",\n          \"doorcode\": {\n            \"code\": \"1234567\",\n            \"description\": \"USER_HAS_GUEST_ACCESS_CONFLICT\"\n          }\n        },\n        {\n          \"sdkDoorUuid\": \"e5cb8a15-5ae0-e279-60c2-3e76d4609eb0\",\n          \"doorcode\": {\n            \"code\": \"1234567\",\n            \"description\": \"USER_HAS_RESIDENT_ACCESS\"\n          }\n        }\n      ],\n      \"granter\": {\n        \"type\": \"PARTNER\",\n        \"uuid\": \"607d03cc-578f-a242-ee58-8f65cc8b9ccd\"\n      },\n      \"keyUuid\": \"4243ee25-a776-6835-b5d9-ed4cd3a24a11\",\n      \"passcodeType\": \"DAILY_SINGLE_USE\",\n      \"shareable\": false,\n      \"startTime\": \"1995-05-30T22:11:44.211Z\",\n      \"userUuid\": \"035a808d-ce76-fedc-c29f-e65810cc3cc9\",\n      \"endTime\": \"1947-03-08T23:22:54.701Z\",\n      \"role\": \"RESIDENT\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "24d673ff-a929-4510-801b-b83553784edc",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "keys",
+                    ":keyUuid",
+                    "accesses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "keyUuid",
+                      "description": "(Required) UUID of the key to get accesses for."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"EMAIL_REQUIRED_FOR_PERMANENT\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "82575e78-7cc5-4d9f-992e-7b7ea55034d9",
+              "name": "Invalid authorization token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "keys",
+                    ":keyUuid",
+                    "accesses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "keyUuid",
+                      "description": "(Required) UUID of the key to get accesses for."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"UNAUTHORIZED\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b3f6d839-0f23-4d9b-825b-275ead7bf033",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "keys",
+                    ":keyUuid",
+                    "accesses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "keyUuid",
+                      "description": "(Required) UUID of the key to get accesses for."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f76fb6cc-0671-49f1-80d3-de99087e21f2",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "keys",
+                    ":keyUuid",
+                    "accesses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "keyUuid",
+                      "description": "(Required) UUID of the key to get accesses for."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "47acfd55-94ce-458c-81ec-ea55c09ed64b",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "keys",
+                    ":keyUuid",
+                    "accesses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "keyUuid",
+                      "description": "(Required) UUID of the key to get accesses for."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"INTERNAL_SERVER_ERROR\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "70809337-67fc-4dd2-b96a-234390eeb675",
+          "name": "Revoke User Access",
+          "request": {
+            "name": "Revoke User Access",
+            "description": {
+              "content": "Revoke user access to the given door/key.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "users",
+                ":userUuid",
+                "doors",
+                ":doorUuid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "userUuid",
+                  "description": "(Required) UUID of the user that we want to revoke access to."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "doorUuid",
+                  "description": "(Required) UUID of door/key we want to revoke access to."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE"
+          },
+          "response": [
+            {
+              "id": "05f4a183-3481-4e7c-a128-8f91c42a0bec",
+              "name": "Successfully revoked access to the given door/key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "users",
+                    ":userUuid",
+                    "doors",
+                    ":doorUuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "userUuid",
+                      "description": "(Required) UUID of the user that we want to revoke access to."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "doorUuid",
+                      "description": "(Required) UUID of door/key we want to revoke access to."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6d3f4f1c-f89c-4795-8673-97ee1b3c66cc",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "users",
+                    ":userUuid",
+                    "doors",
+                    ":doorUuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "userUuid",
+                      "description": "(Required) UUID of the user that we want to revoke access to."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "doorUuid",
+                      "description": "(Required) UUID of door/key we want to revoke access to."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "05885596-fcf4-4655-8219-c6437fa8a6ba",
+              "name": "Invalid authorization token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "users",
+                    ":userUuid",
+                    "doors",
+                    ":doorUuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "userUuid",
+                      "description": "(Required) UUID of the user that we want to revoke access to."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "doorUuid",
+                      "description": "(Required) UUID of door/key we want to revoke access to."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"UNAUTHORIZED\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f7d1774f-d700-4667-bef8-0a9a3ff32fcc",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "users",
+                    ":userUuid",
+                    "doors",
+                    ":doorUuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "userUuid",
+                      "description": "(Required) UUID of the user that we want to revoke access to."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "doorUuid",
+                      "description": "(Required) UUID of door/key we want to revoke access to."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fb258fe7-6b59-44ff-88a3-0d6cf8bbf1d2",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "users",
+                    ":userUuid",
+                    "doors",
+                    ":doorUuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "userUuid",
+                      "description": "(Required) UUID of the user that we want to revoke access to."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "doorUuid",
+                      "description": "(Required) UUID of door/key we want to revoke access to."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"NOT_FOUND\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d046dec0-dc92-4ae9-8f82-588dcdaf7d6b",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "users",
+                    ":userUuid",
+                    "doors",
+                    ":doorUuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "userUuid",
+                      "description": "(Required) UUID of the user that we want to revoke access to."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "doorUuid",
+                      "description": "(Required) UUID of door/key we want to revoke access to."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"INTERNAL_SERVER_ERROR\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b94872af-e4fc-4f50-abcf-00d34d8e531c",
+          "name": "Update User Access",
+          "request": {
+            "name": "Update User Access",
+            "description": {
+              "content": "Update user access to the given door/key.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "users",
+                ":userUuid",
+                "doors",
+                ":doorUuid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "userUuid",
+                  "description": "(Required) UUID of the user that we want to update access for."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "doorUuid",
+                  "description": "(Required) UUID of door/key we want to update access for."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"endTime\": \"<dateTime>\",\n  \"role\": \"<string>\",\n  \"shareable\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1f5a8932-4a33-4473-8a42-b8294158f0c7",
+              "name": "Successfully updated access to the given door/key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "users",
+                    ":userUuid",
+                    "doors",
+                    ":doorUuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "userUuid",
+                      "description": "(Required) UUID of the user that we want to update access for."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "doorUuid",
+                      "description": "(Required) UUID of door/key we want to update access for."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"endTime\": \"<dateTime>\",\n  \"role\": \"<string>\",\n  \"shareable\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"email\": \"john.smith@example.com\",\n  \"firstName\": \"John\",\n  \"lastName\": \"Smith\",\n  \"userUuid\": \"208a1f57-a30e-02c8-b3e5-ca95daffa664\",\n  \"accesses\": [\n    {\n      \"doorUuid\": \"72156350-0aec-5566-fff2-9bbedecdb58a\",\n      \"endTime\": \"1952-09-03T08:44:32.910Z\",\n      \"granter\": {\n        \"type\": \"USER\",\n        \"uuid\": \"882fc083-26c1-469d-4667-16abd642e174\"\n      },\n      \"passcodeType\": \"PERMANENT\",\n      \"shareable\": false,\n      \"startTime\": \"1947-04-09T15:59:50.534Z\",\n      \"doorcode\": {\n        \"code\": \"1234567\",\n        \"description\": \"VALID\"\n      },\n      \"role\": \"GUEST\",\n      \"sdkDoorUuid\": \"20696f0d-dd9e-2f79-b332-120bbd7f20e1\",\n      \"userUuid\": \"0acb2179-c7d4-aad4-e169-242e4e2ad87b\"\n    },\n    {\n      \"doorUuid\": \"bda86432-6c81-7f29-5265-e325d71c09ab\",\n      \"endTime\": \"1986-08-25T14:31:22.868Z\",\n      \"granter\": {\n        \"type\": \"PARTNER\",\n        \"uuid\": \"4a9f7096-c6da-e4c8-76d1-530eccb84d1e\"\n      },\n      \"passcodeType\": \"DAILY_SINGLE_USE\",\n      \"shareable\": false,\n      \"startTime\": \"1975-09-23T03:18:28.294Z\",\n      \"doorcode\": {\n        \"code\": \"1234567\",\n        \"description\": \"COMMUNAL_DOORCODE_CONFLICT\"\n      },\n      \"role\": \"TOURER\",\n      \"sdkDoorUuid\": \"b7fb386a-e3d0-d4c2-e619-2ce6ce1da026\",\n      \"userUuid\": \"2e776dcf-fec0-3f3f-eabd-29c15874a7d3\"\n    }\n  ],\n  \"phone\": \"+1-111-111-1111\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dc67997d-ee49-476e-9609-0c26c9ce2519",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "users",
+                    ":userUuid",
+                    "doors",
+                    ":doorUuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "userUuid",
+                      "description": "(Required) UUID of the user that we want to update access for."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "doorUuid",
+                      "description": "(Required) UUID of door/key we want to update access for."
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"endTime\": \"<dateTime>\",\n  \"role\": \"<string>\",\n  \"shareable\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "14547758-ac16-4de0-b1b3-50a38be801d8",
+              "name": "Bad Request Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "users",
+                    ":userUuid",
+                    "doors",
+                    ":doorUuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "userUuid",
+                      "description": "(Required) UUID of the user that we want to update access for."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "doorUuid",
+                      "description": "(Required) UUID of door/key we want to update access for."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"endTime\": \"<dateTime>\",\n  \"role\": \"<string>\",\n  \"shareable\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"EMAIL_REQUIRED_FOR_PERMANENT\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "84679da3-58df-4462-a6bb-258dbc1dce28",
+              "name": "Invalid authorization token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "users",
+                    ":userUuid",
+                    "doors",
+                    ":doorUuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "userUuid",
+                      "description": "(Required) UUID of the user that we want to update access for."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "doorUuid",
+                      "description": "(Required) UUID of door/key we want to update access for."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"endTime\": \"<dateTime>\",\n  \"role\": \"<string>\",\n  \"shareable\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"UNAUTHORIZED\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8684349d-3a28-47a5-9d13-21c40ca0cd6d",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "users",
+                    ":userUuid",
+                    "doors",
+                    ":doorUuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "userUuid",
+                      "description": "(Required) UUID of the user that we want to update access for."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "doorUuid",
+                      "description": "(Required) UUID of door/key we want to update access for."
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"endTime\": \"<dateTime>\",\n  \"role\": \"<string>\",\n  \"shareable\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "548d4f92-add9-4984-ae44-80b701493bce",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "users",
+                    ":userUuid",
+                    "doors",
+                    ":doorUuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "userUuid",
+                      "description": "(Required) UUID of the user that we want to update access for."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "doorUuid",
+                      "description": "(Required) UUID of door/key we want to update access for."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"endTime\": \"<dateTime>\",\n  \"role\": \"<string>\",\n  \"shareable\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"NOT_FOUND\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "627a3846-4212-4dd4-b464-98df0f2e51b4",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "users",
+                    ":userUuid",
+                    "doors",
+                    ":doorUuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "userUuid",
+                      "description": "(Required) UUID of the user that we want to update access for."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "doorUuid",
+                      "description": "(Required) UUID of door/key we want to update access for."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"endTime\": \"<dateTime>\",\n  \"role\": \"<string>\",\n  \"shareable\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"INTERNAL_SERVER_ERROR\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://auth.prod.latch.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "5cfb45e1-b90a-4e77-80ed-c0b09cb8f4d8",
+    "name": "Authentication Access Management API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Authentication",
+      "type": "text/plain"
+    }
+  }
+}

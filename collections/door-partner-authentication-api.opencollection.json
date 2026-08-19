@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Authentication Access Management Partner Authentication API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Partner Authentication",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Authenticate Partner",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://auth.prod.latch.com/v1/oauth/token#m2m",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "M2M Authorization endpoint"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

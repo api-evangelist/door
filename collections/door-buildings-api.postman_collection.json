@@ -1,0 +1,271 @@
+{
+  "item": [
+    {
+      "id": "e3fd6406-19ba-4697-b369-fdfd2a21d2e3",
+      "name": "Buildings",
+      "description": {
+        "content": "Building operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3d365984-704c-4eb1-bf5b-bf5b9b3db129",
+          "name": "List Buildings",
+          "request": {
+            "name": "List Buildings",
+            "description": {
+              "content": "Get a DOOR partner's list of buildings",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "buildings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET"
+          },
+          "response": [
+            {
+              "id": "02e9bc9d-19ec-4c51-bada-7d9813f3a367",
+              "name": "Successfully retrieved list of buildings",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "buildings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"buildings\": [\n    {\n      \"address\": {\n        \"addressLine1\": \"string\",\n        \"addressLine2\": \"string\",\n        \"addressLine3\": \"string\",\n        \"city\": \"string\",\n        \"country\": \"string\",\n        \"postalCode\": \"string\",\n        \"state\": \"string\"\n      },\n      \"name\": \"string\",\n      \"uuid\": \"e78d3769-a39c-fd69-83ce-5b0f9c91165c\",\n      \"portfolio\": {\n        \"name\": \"string\",\n        \"uuid\": \"4250df9e-2767-c442-5b8e-20897b182ff3\"\n      },\n      \"timezone\": \"America/New_York\"\n    },\n    {\n      \"address\": {\n        \"addressLine1\": \"string\",\n        \"addressLine2\": \"string\",\n        \"addressLine3\": \"string\",\n        \"city\": \"string\",\n        \"country\": \"string\",\n        \"postalCode\": \"string\",\n        \"state\": \"string\"\n      },\n      \"name\": \"string\",\n      \"uuid\": \"0aef8dc9-8ed0-35d4-1ef4-5e239dc30998\",\n      \"portfolio\": {\n        \"name\": \"string\",\n        \"uuid\": \"fb009be3-5f92-69a7-8a5a-41362b85b8ac\"\n      },\n      \"timezone\": \"America/New_York\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3114e532-b55b-4044-a78d-bc86a427a5c9",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "buildings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"INVALID_END_TIME\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cbff9154-dc9c-4f76-b3e8-76b32c8f476f",
+              "name": "Invalid authorization token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "buildings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"UNAUTHORIZED\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "71542cff-7d53-491b-9f82-2a7b8c0fa97e",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "buildings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a57ff4a7-cac4-4787-aecf-26d07894698e",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "buildings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "eb3b8a28-851a-48cc-9023-994e64c51087",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "buildings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"INTERNAL_SERVER_ERROR\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://auth.prod.latch.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "664a3e35-f864-4038-8843-66aedd617b8a",
+    "name": "Authentication Access Management Buildings API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Authentication",
+      "type": "text/plain"
+    }
+  }
+}
