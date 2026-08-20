@@ -37,6 +37,17 @@ tags:
 - Company
 - Access Control
 - Smart Building
+- PropTech
+- Physical Security
+- IoT
+- Multifamily
+- Real-Estate
+- Smart Lock
+- Building Automation
+tags_raw:
+- Company
+- Access Control
+- Smart Building
 - Proptech
 - Physical Security
 - IoT
@@ -101,6 +112,8 @@ apis:
   humanURL: https://developers.door.com/reference
   baseURL: https://rest.latchaccess.com/access/sdk
   tags:
+  - User
+  tags_raw:
   - Users
   properties:
   - type: OpenAPI
