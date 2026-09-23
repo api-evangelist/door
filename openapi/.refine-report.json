@@ -1,24 +1,32 @@
 {
   "provider": "door",
   "sources": [
-    "door-access-management-api-openapi.yml",
-    "door-buildings-api-openapi.yml",
-    "door-doors-and-keys-api-openapi.yml",
-    "door-partner-authentication-api-openapi.yml",
-    "door-user-authentication-api-openapi.yml",
-    "door-users-api-openapi.yml"
+    "_original/door-authentication-openapi.json",
+    "_original/door-partner-openapi.json"
   ],
   "outputs": [
+    "door-partner-authentication-api-openapi.yml",
+    "door-user-authentication-api-openapi.yml",
     "door-access-management-api-openapi.yml",
     "door-buildings-api-openapi.yml",
     "door-doors-and-keys-api-openapi.yml",
-    "door-partner-authentication-api-openapi.yml",
-    "door-user-authentication-api-openapi.yml",
     "door-users-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (2 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "door-authentication-openapi.json: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "door-partner-openapi.json: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "door-access-management-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "door-buildings-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "door-doors-and-keys-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "door-partner-authentication-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "door-user-authentication-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "door-users-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Authentication Access Management Partner Authentication API
+  title: Partner Authentication API
   description: Authentication
   termsOfService: urn:tos
   contact: {}
@@ -48,6 +48,31 @@ paths:
           description: Not Found
 components:
   schemas:
+    AuthorizationRequestParams:
+      title: AuthorizationRequestParams
+      required:
+      - audience
+      - client_id
+      - client_secret
+      - grant_type
+      type: object
+      properties:
+        audience:
+          type: string
+          description: Latch API to be authorized for
+          default: https://rest.latchaccess.com/access/sdk
+        client_id:
+          type: string
+          description: Auth0 client identifier
+        client_secret:
+          type: string
+          description: Auth0 client secret
+        grant_type:
+          type: string
+          description: Always "client_credentials"
+          enum:
+          - client_credentials
+      description: Parameters for the Auth0 endpoint
     UnauthorizedError:
       title: UnauthorizedError
       required:
@@ -74,28 +99,3 @@ components:
           enum:
           - Bearer
       description: Response from the authentication endpoint
-    AuthorizationRequestParams:
-      title: AuthorizationRequestParams
-      required:
-      - audience
-      - client_id
-      - client_secret
-      - grant_type
-      type: object
-      properties:
-        audience:
-          type: string
-          description: Latch API to be authorized for
-          default: https://rest.latchaccess.com/access/sdk
-        client_id:
-          type: string
-          description: Auth0 client identifier
-        client_secret:
-          type: string
-          description: Auth0 client secret
-        grant_type:
-          type: string
-          description: Always "client_credentials"
-          enum:
-          - client_credentials
-      description: Parameters for the Auth0 endpoint

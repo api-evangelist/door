@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Authentication Access Management User Authentication API
+  title: User Authentication API
   description: Authentication
   termsOfService: urn:tos
   contact: {}
@@ -110,50 +110,6 @@ paths:
           description: Not Found
 components:
   schemas:
-    PasswordlessAuthorizationRequestParams:
-      title: PasswordlessAuthorizationRequestParams
-      required:
-      - audience
-      - client_id
-      - client_secret
-      - grant_type
-      - otp
-      - realm
-      - scope
-      - username
-      type: object
-      properties:
-        audience:
-          type: string
-          description: Latch API to be authorized for
-          default: https://rest.latchaccess.com/access/sdk
-        client_id:
-          type: string
-          description: Auth0 regular web application client identifier
-        client_secret:
-          type: string
-          description: Auth0 regular web application client secret
-        grant_type:
-          type: string
-          enum:
-          - http://auth0.com/oauth/grant-type/passwordless/otp
-        otp:
-          type: string
-          description: Auth0 verification code sent to user
-          example: '123456'
-        realm:
-          type: string
-          enum:
-          - email
-        scope:
-          type: string
-          description: Auth0 scopes for token
-          enum:
-          - openid profile email offline_access
-        username:
-          type: string
-          description: Email of user
-      description: Parameters for the Auth0 passwordless token endpoint
     AuthorizationRefreshRequestParams:
       title: AuthorizationRefreshRequestParams
       required:
@@ -211,6 +167,50 @@ components:
           enum:
           - code
       description: Parameters for the Auth0 passwordless start endpoint
+    PasswordlessAuthorizationRequestParams:
+      title: PasswordlessAuthorizationRequestParams
+      required:
+      - audience
+      - client_id
+      - client_secret
+      - grant_type
+      - otp
+      - realm
+      - scope
+      - username
+      type: object
+      properties:
+        audience:
+          type: string
+          description: Latch API to be authorized for
+          default: https://rest.latchaccess.com/access/sdk
+        client_id:
+          type: string
+          description: Auth0 regular web application client identifier
+        client_secret:
+          type: string
+          description: Auth0 regular web application client secret
+        grant_type:
+          type: string
+          enum:
+          - http://auth0.com/oauth/grant-type/passwordless/otp
+        otp:
+          type: string
+          description: Auth0 verification code sent to user
+          example: '123456'
+        realm:
+          type: string
+          enum:
+          - email
+        scope:
+          type: string
+          description: Auth0 scopes for token
+          enum:
+          - openid profile email offline_access
+        username:
+          type: string
+          description: Email of user
+      description: Parameters for the Auth0 passwordless token endpoint
     PasswordlessAuthorizationResponseParams:
       title: PasswordlessAuthorizationResponseParams
       required:

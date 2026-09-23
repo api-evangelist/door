@@ -1,7 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Authentication Access Management API
-  description: Authentication
+  title: Partner Access Management API
+  description: Partner API
   termsOfService: urn:tos
   contact: {}
   license:
@@ -9,8 +9,10 @@ info:
     url: http://www.apache.org/licenses/LICENSE-2.0
   version: '1.0'
 servers:
-- url: https://auth.prod.latch.com
-  description: Latch Auth API base URL
+- url: https://rest.latchaccess.com/access/sdk
+  description: DOOR REST API base URL
+security:
+- bearerAuth: []
 tags:
 - name: Access Management
   description: User access management operations
@@ -275,6 +277,25 @@ paths:
       - bearerAuth: []
 components:
   schemas:
+    DeviceInfo:
+      title: DeviceInfo
+      required:
+      - battery
+      - serialNumber
+      - type
+      type: object
+      properties:
+        battery:
+          $ref: '#/components/schemas/Battery'
+        serialNumber:
+          type: string
+          description: Serial number of the lock device
+          example: 0123456789
+        type:
+          type: string
+          description: DOOR device type
+          example: C
+      description: Additional information about the physical lock device.
     KeyAccess:
       title: KeyAccess
       required:
@@ -328,54 +349,26 @@ components:
           description: User identifier
           format: uuid
       description: A user's access to a key, with per-door/key data grouped in the doors/keys list
-    KeyAccessesResponse:
-      title: KeyAccessesResponse
-      required:
-      - accesses
+    UpdateUserDoorRequest:
+      title: UpdateUserDoorRequest
       type: object
       properties:
-        accesses:
-          type: array
-          items:
-            $ref: '#/components/schemas/KeyAccess'
-      description: Response from the key accesses endpoint
-    PostUserResponse:
-      title: PostUserResponse
-      required:
-      - doors
-      - userUuid
-      type: object
-      properties:
-        doors:
-          type: array
-          description: List of doors/keys user has access to
-          items:
-            $ref: '#/components/schemas/Door'
-        userUuid:
+        endTime:
           type: string
-          description: User unique identifier
-          format: uuid
-      description: Response from the post users endpoint
-    NotFoundError:
-      title: NotFoundError
-      required:
-      - message
-      type: object
-      properties:
-        message:
+          description: End time of access to door/key
+          format: date-time
+        role:
           type: string
           enum:
-          - NOT_FOUND
-    InternalServerError:
-      title: InternalServerError
-      required:
-      - message
-      type: object
-      properties:
-        message:
-          type: string
-          enum:
-          - INTERNAL_SERVER_ERROR
+          - GUEST
+          - NON_RESIDENT
+          - RESIDENT
+          - TOURER
+        shareable:
+          type: boolean
+          description: User able to share access to guests
+          example: false
+      description: JSON representation of the user's access to the door/key to update for the patch users door/key endpoint
     User:
       title: User
       required:
@@ -407,6 +400,16 @@ components:
           description: User identifier
           format: uuid
       description: DOOR User object
+    InternalServerError:
+      title: InternalServerError
+      required:
+      - message
+      type: object
+      properties:
+        message:
+          type: string
+          enum:
+          - INTERNAL_SERVER_ERROR
     Battery:
       title: Battery
       required:
@@ -425,26 +428,47 @@ components:
           format: int32
           example: 92
       description: Information on the device battery.
-    Doorcode:
-      title: Doorcode
+    BadRequestError:
+      title: BadRequestError
       required:
-      - code
-      - description
+      - message
       type: object
       properties:
-        code:
+        message:
           type: string
-          description: A 7 digit doorcode to unlock door/key
-          example: '1234567'
-        description:
-          type: string
-          description: A message to explain the doorcode result
           enum:
-          - COMMUNAL_DOORCODE_CONFLICT
-          - USER_HAS_GUEST_ACCESS_CONFLICT
-          - USER_HAS_RESIDENT_ACCESS
-          - VALID
-      description: Doorcode object
+          - BUILDING_UUID_REQUIRED
+          - EMAIL_AND_PHONE_PROVIDED
+          - EMAIL_CAN_NOT_BE_EMPTY
+          - EMAIL_OR_PHONE_REQUIRED
+          - EMAIL_REQUIRED_FOR_PERMANENT
+          - END_TIME_NOT_SUPPORTED
+          - INVALID_END_TIME
+          - INVALID_PHONE
+          - INVALID_START_TIME
+          - MISSING_END_TIME
+          - PASSCODE_TYPE_CANT_BE_REVOKED
+          - USER_CAN_NOT_SHARE
+    NotFoundError:
+      title: NotFoundError
+      required:
+      - message
+      type: object
+      properties:
+        message:
+          type: string
+          enum:
+          - NOT_FOUND
+    UnauthorizedError:
+      title: UnauthorizedError
+      required:
+      - message
+      type: object
+      properties:
+        message:
+          type: string
+          enum:
+          - UNAUTHORIZED
     KeyAccessDoor:
       title: KeyAccessDoor
       required:
@@ -458,92 +482,6 @@ components:
           description: DOOR Door/Key Unique Identifier
           format: uuid
       description: Door/Key-specific data within a key access
-    UpdateUserDoorRequest:
-      title: UpdateUserDoorRequest
-      type: object
-      properties:
-        endTime:
-          type: string
-          description: End time of access to door/key
-          format: date-time
-        role:
-          type: string
-          enum:
-          - GUEST
-          - NON_RESIDENT
-          - RESIDENT
-          - TOURER
-        shareable:
-          type: boolean
-          description: User able to share access to guests
-          example: false
-      description: JSON representation of the user's access to the door/key to update for the patch users door/key endpoint
-    PostUserRequest:
-      title: PostUserRequest
-      required:
-      - firstName
-      - lastName
-      - passcodeType
-      - shareable
-      - startTime
-      type: object
-      properties:
-        doorUuids:
-          type: array
-          items:
-            type: string
-            format: uuid
-        keyUuids:
-          type: array
-          items:
-            type: string
-            format: uuid
-        email:
-          type: string
-          description: Email of user
-        endTime:
-          type: string
-          description: End time of access to doors/keys
-          format: date-time
-        firstName:
-          maxLength: 2147483647
-          minLength: 1
-          type: string
-          description: First name of user
-        lastName:
-          maxLength: 2147483647
-          minLength: 1
-          type: string
-          description: Last name of user
-        passcodeType:
-          type: string
-          enum:
-          - DAILY
-          - DAILY_SINGLE_USE
-          - PERMANENT
-        phone:
-          type: string
-          description: Phone number of user
-        role:
-          type: string
-          enum:
-          - GUEST
-          - NON_RESIDENT
-          - RESIDENT
-          - TOURER
-        shareable:
-          type: boolean
-          description: User able to share access to guests
-          example: false
-        shouldNotify:
-          type: boolean
-          description: Toggle user invite notification
-          example: false
-        startTime:
-          type: string
-          description: Start time of access to doors/keys
-          format: date-time
-      description: JSON representation of the user for the post users endpoint
     UserAccess:
       title: UserAccess
       required:
@@ -615,56 +553,34 @@ components:
           description: identifier of the granter of access
           format: uuid
       description: Definition of the granter of Access
-    DeviceInfo:
-      title: DeviceInfo
+    PostUserResponse:
+      title: PostUserResponse
       required:
-      - battery
-      - serialNumber
-      - type
+      - doors
+      - userUuid
       type: object
       properties:
-        battery:
-          $ref: '#/components/schemas/Battery'
-        serialNumber:
+        doors:
+          type: array
+          description: List of doors/keys user has access to
+          items:
+            $ref: '#/components/schemas/Door'
+        userUuid:
           type: string
-          description: Serial number of the lock device
-          example: 0123456789
-        type:
-          type: string
-          description: DOOR device type
-          example: C
-      description: Additional information about the physical lock device.
-    UnauthorizedError:
-      title: UnauthorizedError
+          description: User unique identifier
+          format: uuid
+      description: Response from the post users endpoint
+    KeyAccessesResponse:
+      title: KeyAccessesResponse
       required:
-      - message
+      - accesses
       type: object
       properties:
-        message:
-          type: string
-          enum:
-          - UNAUTHORIZED
-    BadRequestError:
-      title: BadRequestError
-      required:
-      - message
-      type: object
-      properties:
-        message:
-          type: string
-          enum:
-          - BUILDING_UUID_REQUIRED
-          - EMAIL_AND_PHONE_PROVIDED
-          - EMAIL_CAN_NOT_BE_EMPTY
-          - EMAIL_OR_PHONE_REQUIRED
-          - EMAIL_REQUIRED_FOR_PERMANENT
-          - END_TIME_NOT_SUPPORTED
-          - INVALID_END_TIME
-          - INVALID_PHONE
-          - INVALID_START_TIME
-          - MISSING_END_TIME
-          - PASSCODE_TYPE_CANT_BE_REVOKED
-          - USER_CAN_NOT_SHARE
+        accesses:
+          type: array
+          items:
+            $ref: '#/components/schemas/KeyAccess'
+      description: Response from the key accesses endpoint
     Door:
       title: Door
       required:
@@ -707,3 +623,94 @@ components:
           description: Door/Key unique identifier
           format: uuid
       description: DOOR Door/Key object
+    Doorcode:
+      title: Doorcode
+      required:
+      - code
+      - description
+      type: object
+      properties:
+        code:
+          type: string
+          description: A 7 digit doorcode to unlock door/key
+          example: '1234567'
+        description:
+          type: string
+          description: A message to explain the doorcode result
+          enum:
+          - COMMUNAL_DOORCODE_CONFLICT
+          - USER_HAS_GUEST_ACCESS_CONFLICT
+          - USER_HAS_RESIDENT_ACCESS
+          - VALID
+      description: Doorcode object
+    PostUserRequest:
+      title: PostUserRequest
+      required:
+      - firstName
+      - lastName
+      - passcodeType
+      - shareable
+      - startTime
+      type: object
+      properties:
+        doorUuids:
+          type: array
+          items:
+            type: string
+            format: uuid
+        keyUuids:
+          type: array
+          items:
+            type: string
+            format: uuid
+        email:
+          type: string
+          description: Email of user
+        endTime:
+          type: string
+          description: End time of access to doors/keys
+          format: date-time
+        firstName:
+          maxLength: 2147483647
+          minLength: 1
+          type: string
+          description: First name of user
+        lastName:
+          maxLength: 2147483647
+          minLength: 1
+          type: string
+          description: Last name of user
+        passcodeType:
+          type: string
+          enum:
+          - DAILY
+          - DAILY_SINGLE_USE
+          - PERMANENT
+        phone:
+          type: string
+          description: Phone number of user
+        role:
+          type: string
+          enum:
+          - GUEST
+          - NON_RESIDENT
+          - RESIDENT
+          - TOURER
+        shareable:
+          type: boolean
+          description: User able to share access to guests
+          example: false
+        shouldNotify:
+          type: boolean
+          description: Toggle user invite notification
+          example: false
+        startTime:
+          type: string
+          description: Start time of access to doors/keys
+          format: date-time
+      description: JSON representation of the user for the post users endpoint
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

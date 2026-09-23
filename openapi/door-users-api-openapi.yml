@@ -1,7 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Authentication Access Management Users API
-  description: Authentication
+  title: Partner Users API
+  description: Partner API
   termsOfService: urn:tos
   contact: {}
   license:
@@ -9,8 +9,10 @@ info:
     url: http://www.apache.org/licenses/LICENSE-2.0
   version: '1.0'
 servers:
-- url: https://auth.prod.latch.com
-  description: Latch Auth API base URL
+- url: https://rest.latchaccess.com/access/sdk
+  description: DOOR REST API base URL
+security:
+- bearerAuth: []
 tags:
 - name: Users
   description: User operations
@@ -184,40 +186,6 @@ paths:
       - bearerAuth: []
 components:
   schemas:
-    ResidentsResponse:
-      title: ResidentsResponse
-      required:
-      - residents
-      type: object
-      properties:
-        nextPageToken:
-          type: string
-          description: Token to fetch the next page
-        residents:
-          type: array
-          items:
-            $ref: '#/components/schemas/Resident'
-      description: Response from the residents endpoint. Returns first 100 residents by default
-    NotFoundError:
-      title: NotFoundError
-      required:
-      - message
-      type: object
-      properties:
-        message:
-          type: string
-          enum:
-          - NOT_FOUND
-    InternalServerError:
-      title: InternalServerError
-      required:
-      - message
-      type: object
-      properties:
-        message:
-          type: string
-          enum:
-          - INTERNAL_SERVER_ERROR
     User:
       title: User
       required:
@@ -249,6 +217,16 @@ components:
           description: User identifier
           format: uuid
       description: DOOR User object
+    InternalServerError:
+      title: InternalServerError
+      required:
+      - message
+      type: object
+      properties:
+        message:
+          type: string
+          enum:
+          - INTERNAL_SERVER_ERROR
     Resident:
       title: Resident
       required:
@@ -275,26 +253,61 @@ components:
           description: Unique identifier of the user
           format: uuid
       description: Resident object
-    Doorcode:
-      title: Doorcode
+    BadRequestError:
+      title: BadRequestError
       required:
-      - code
-      - description
+      - message
       type: object
       properties:
-        code:
+        message:
           type: string
-          description: A 7 digit doorcode to unlock door/key
-          example: '1234567'
-        description:
-          type: string
-          description: A message to explain the doorcode result
           enum:
-          - COMMUNAL_DOORCODE_CONFLICT
-          - USER_HAS_GUEST_ACCESS_CONFLICT
-          - USER_HAS_RESIDENT_ACCESS
-          - VALID
-      description: Doorcode object
+          - BUILDING_UUID_REQUIRED
+          - EMAIL_AND_PHONE_PROVIDED
+          - EMAIL_CAN_NOT_BE_EMPTY
+          - EMAIL_OR_PHONE_REQUIRED
+          - EMAIL_REQUIRED_FOR_PERMANENT
+          - END_TIME_NOT_SUPPORTED
+          - INVALID_END_TIME
+          - INVALID_PHONE
+          - INVALID_START_TIME
+          - MISSING_END_TIME
+          - PASSCODE_TYPE_CANT_BE_REVOKED
+          - USER_CAN_NOT_SHARE
+    NotFoundError:
+      title: NotFoundError
+      required:
+      - message
+      type: object
+      properties:
+        message:
+          type: string
+          enum:
+          - NOT_FOUND
+    UnauthorizedError:
+      title: UnauthorizedError
+      required:
+      - message
+      type: object
+      properties:
+        message:
+          type: string
+          enum:
+          - UNAUTHORIZED
+    ResidentsResponse:
+      title: ResidentsResponse
+      required:
+      - residents
+      type: object
+      properties:
+        nextPageToken:
+          type: string
+          description: Token to fetch the next page
+        residents:
+          type: array
+          items:
+            $ref: '#/components/schemas/Resident'
+      description: Response from the residents endpoint. Returns first 100 residents by default
     UserAccess:
       title: UserAccess
       required:
@@ -380,34 +393,28 @@ components:
           items:
             $ref: '#/components/schemas/User'
       description: Response from the users endpoint
-    UnauthorizedError:
-      title: UnauthorizedError
+    Doorcode:
+      title: Doorcode
       required:
-      - message
+      - code
+      - description
       type: object
       properties:
-        message:
+        code:
           type: string
-          enum:
-          - UNAUTHORIZED
-    BadRequestError:
-      title: BadRequestError
-      required:
-      - message
-      type: object
-      properties:
-        message:
+          description: A 7 digit doorcode to unlock door/key
+          example: '1234567'
+        description:
           type: string
+          description: A message to explain the doorcode result
           enum:
-          - BUILDING_UUID_REQUIRED
-          - EMAIL_AND_PHONE_PROVIDED
-          - EMAIL_CAN_NOT_BE_EMPTY
-          - EMAIL_OR_PHONE_REQUIRED
-          - EMAIL_REQUIRED_FOR_PERMANENT
-          - END_TIME_NOT_SUPPORTED
-          - INVALID_END_TIME
-          - INVALID_PHONE
-          - INVALID_START_TIME
-          - MISSING_END_TIME
-          - PASSCODE_TYPE_CANT_BE_REVOKED
-          - USER_CAN_NOT_SHARE
+          - COMMUNAL_DOORCODE_CONFLICT
+          - USER_HAS_GUEST_ACCESS_CONFLICT
+          - USER_HAS_RESIDENT_ACCESS
+          - VALID
+      description: Doorcode object
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
