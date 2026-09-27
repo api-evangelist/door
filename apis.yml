@@ -45,6 +45,9 @@ x-tier-reason: developer-hub-openapi
 specificationVersion: '0.23'
 created: '2026-07-17'
 modified: '2026-07-18'
+x-docs-platform: readme
+x-docs-platform-confidence: high
+x-docs-platform-checked: 2026-09-25
 tags:
 - Company
 - Access Control
@@ -53,7 +56,7 @@ tags:
 - Physical Security
 - IoT
 - Multifamily
-- Real-Estate
+- Real Estate
 - Smart Lock
 - Building Automation
 tags_raw:
@@ -67,6 +70,7 @@ tags_raw:
 - Real Estate
 - Smart Lock
 - Building Automation
+- Real-Estate
 apis:
 - aid: door:door-access-management-api
   name: Door Access Management API

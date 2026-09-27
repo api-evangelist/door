@@ -110,63 +110,6 @@ paths:
           description: Not Found
 components:
   schemas:
-    AuthorizationRefreshRequestParams:
-      title: AuthorizationRefreshRequestParams
-      required:
-      - audience
-      - client_id
-      - client_secret
-      - grant_type
-      - refresh_token
-      type: object
-      properties:
-        audience:
-          type: string
-          description: Latch API to be authorized for
-          default: https://rest.latchaccess.com/access/sdk
-        client_id:
-          type: string
-          description: Auth0 regular web application client identifier
-        client_secret:
-          type: string
-          description: Auth0 regular web application client secret
-        grant_type:
-          type: string
-          description: Always "refresh_token"
-          enum:
-          - refresh_token
-        refresh_token:
-          type: string
-          description: Auth0 refresh token
-      description: Parameters for the Auth0 token refresh endpoint
-    PasswordlessStartRequestParams:
-      title: PasswordlessStartRequestParams
-      required:
-      - client_id
-      - client_secret
-      - connection
-      - email
-      - send
-      type: object
-      properties:
-        client_id:
-          type: string
-          description: Auth0 regular web application client identifier
-        client_secret:
-          type: string
-          description: Auth0 regular web application client secret
-        connection:
-          type: string
-          enum:
-          - email
-        email:
-          type: string
-          description: Email of user
-        send:
-          type: string
-          enum:
-          - code
-      description: Parameters for the Auth0 passwordless start endpoint
     PasswordlessAuthorizationRequestParams:
       title: PasswordlessAuthorizationRequestParams
       required:
@@ -231,16 +174,6 @@ components:
           enum:
           - Bearer
       description: Response from the authentication endpoint
-    UnauthorizedError:
-      title: UnauthorizedError
-      required:
-      - message
-      type: object
-      properties:
-        message:
-          type: string
-          enum:
-          - UNAUTHORIZED
     PasswordlessStartResponseParams:
       title: PasswordlessStartResponseParams
       required:
@@ -260,3 +193,70 @@ components:
           description: Verification status of Auth0 account associated with user email. This will not impact the auth flow.
           example: false
       description: Response from the authentication endpoint
+    PasswordlessStartRequestParams:
+      title: PasswordlessStartRequestParams
+      required:
+      - client_id
+      - client_secret
+      - connection
+      - email
+      - send
+      type: object
+      properties:
+        client_id:
+          type: string
+          description: Auth0 regular web application client identifier
+        client_secret:
+          type: string
+          description: Auth0 regular web application client secret
+        connection:
+          type: string
+          enum:
+          - email
+        email:
+          type: string
+          description: Email of user
+        send:
+          type: string
+          enum:
+          - code
+      description: Parameters for the Auth0 passwordless start endpoint
+    UnauthorizedError:
+      title: UnauthorizedError
+      required:
+      - message
+      type: object
+      properties:
+        message:
+          type: string
+          enum:
+          - UNAUTHORIZED
+    AuthorizationRefreshRequestParams:
+      title: AuthorizationRefreshRequestParams
+      required:
+      - audience
+      - client_id
+      - client_secret
+      - grant_type
+      - refresh_token
+      type: object
+      properties:
+        audience:
+          type: string
+          description: Latch API to be authorized for
+          default: https://rest.latchaccess.com/access/sdk
+        client_id:
+          type: string
+          description: Auth0 regular web application client identifier
+        client_secret:
+          type: string
+          description: Auth0 regular web application client secret
+        grant_type:
+          type: string
+          description: Always "refresh_token"
+          enum:
+          - refresh_token
+        refresh_token:
+          type: string
+          description: Auth0 refresh token
+      description: Parameters for the Auth0 token refresh endpoint

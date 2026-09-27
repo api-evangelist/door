@@ -57,8 +57,8 @@ paths:
       - bearerAuth: []
 components:
   schemas:
-    InternalServerError:
-      title: InternalServerError
+    BadRequestError:
+      title: BadRequestError
       required:
       - message
       type: object
@@ -66,7 +66,67 @@ components:
         message:
           type: string
           enum:
-          - INTERNAL_SERVER_ERROR
+          - BUILDING_UUID_REQUIRED
+          - EMAIL_AND_PHONE_PROVIDED
+          - EMAIL_CAN_NOT_BE_EMPTY
+          - EMAIL_OR_PHONE_REQUIRED
+          - EMAIL_REQUIRED_FOR_PERMANENT
+          - END_TIME_NOT_SUPPORTED
+          - INVALID_END_TIME
+          - INVALID_PHONE
+          - INVALID_START_TIME
+          - MISSING_END_TIME
+          - PASSCODE_TYPE_CANT_BE_REVOKED
+          - USER_CAN_NOT_SHARE
+    Building:
+      title: Building
+      required:
+      - address
+      - name
+      - uuid
+      type: object
+      properties:
+        address:
+          $ref: '#/components/schemas/Address'
+        name:
+          type: string
+          description: Name of the Building
+        portfolio:
+          $ref: '#/components/schemas/Portfolio'
+        timezone:
+          type: string
+          description: Timezone of the building in IANA zone ID format
+          example: America/New_York
+        uuid:
+          type: string
+          description: Building unique identifier
+          format: uuid
+      description: DOOR Building object
+    Portfolio:
+      title: Portfolio
+      required:
+      - name
+      - uuid
+      type: object
+      properties:
+        name:
+          type: string
+          description: Name of the Portfolio
+        uuid:
+          type: string
+          description: Portfolio unique identifier
+          format: uuid
+      description: DOOR Portfolio object
+    UnauthorizedError:
+      title: UnauthorizedError
+      required:
+      - message
+      type: object
+      properties:
+        message:
+          type: string
+          enum:
+          - UNAUTHORIZED
     Address:
       title: Address
       required:
@@ -101,8 +161,8 @@ components:
           type: string
           description: State the building is located in
       description: Address of the building
-    BadRequestError:
-      title: BadRequestError
+    InternalServerError:
+      title: InternalServerError
       required:
       - message
       type: object
@@ -110,18 +170,7 @@ components:
         message:
           type: string
           enum:
-          - BUILDING_UUID_REQUIRED
-          - EMAIL_AND_PHONE_PROVIDED
-          - EMAIL_CAN_NOT_BE_EMPTY
-          - EMAIL_OR_PHONE_REQUIRED
-          - EMAIL_REQUIRED_FOR_PERMANENT
-          - END_TIME_NOT_SUPPORTED
-          - INVALID_END_TIME
-          - INVALID_PHONE
-          - INVALID_START_TIME
-          - MISSING_END_TIME
-          - PASSCODE_TYPE_CANT_BE_REVOKED
-          - USER_CAN_NOT_SHARE
+          - INTERNAL_SERVER_ERROR
     BuildingsResponse:
       title: BuildingsResponse
       required:
@@ -133,55 +182,6 @@ components:
           items:
             $ref: '#/components/schemas/Building'
       description: Response from the buildings endpoint
-    Building:
-      title: Building
-      required:
-      - address
-      - name
-      - uuid
-      type: object
-      properties:
-        address:
-          $ref: '#/components/schemas/Address'
-        name:
-          type: string
-          description: Name of the Building
-        portfolio:
-          $ref: '#/components/schemas/Portfolio'
-        timezone:
-          type: string
-          description: Timezone of the building in IANA zone ID format
-          example: America/New_York
-        uuid:
-          type: string
-          description: Building unique identifier
-          format: uuid
-      description: DOOR Building object
-    UnauthorizedError:
-      title: UnauthorizedError
-      required:
-      - message
-      type: object
-      properties:
-        message:
-          type: string
-          enum:
-          - UNAUTHORIZED
-    Portfolio:
-      title: Portfolio
-      required:
-      - name
-      - uuid
-      type: object
-      properties:
-        name:
-          type: string
-          description: Name of the Portfolio
-        uuid:
-          type: string
-          description: Portfolio unique identifier
-          format: uuid
-      description: DOOR Portfolio object
   securitySchemes:
     bearerAuth:
       type: http
