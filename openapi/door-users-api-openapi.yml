@@ -186,180 +186,6 @@ paths:
       - bearerAuth: []
 components:
   schemas:
-    BadRequestError:
-      title: BadRequestError
-      required:
-      - message
-      type: object
-      properties:
-        message:
-          type: string
-          enum:
-          - BUILDING_UUID_REQUIRED
-          - EMAIL_AND_PHONE_PROVIDED
-          - EMAIL_CAN_NOT_BE_EMPTY
-          - EMAIL_OR_PHONE_REQUIRED
-          - EMAIL_REQUIRED_FOR_PERMANENT
-          - END_TIME_NOT_SUPPORTED
-          - INVALID_END_TIME
-          - INVALID_PHONE
-          - INVALID_START_TIME
-          - MISSING_END_TIME
-          - PASSCODE_TYPE_CANT_BE_REVOKED
-          - USER_CAN_NOT_SHARE
-    NotFoundError:
-      title: NotFoundError
-      required:
-      - message
-      type: object
-      properties:
-        message:
-          type: string
-          enum:
-          - NOT_FOUND
-    AccessGranter:
-      title: AccessGranter
-      required:
-      - type
-      - uuid
-      type: object
-      properties:
-        type:
-          type: string
-          description: Type of granter
-          enum:
-          - PARTNER
-          - USER
-        uuid:
-          type: string
-          description: identifier of the granter of access
-          format: uuid
-      description: Definition of the granter of Access
-    ResidentsResponse:
-      title: ResidentsResponse
-      required:
-      - residents
-      type: object
-      properties:
-        nextPageToken:
-          type: string
-          description: Token to fetch the next page
-        residents:
-          type: array
-          items:
-            $ref: '#/components/schemas/Resident'
-      description: Response from the residents endpoint. Returns first 100 residents by default
-    UsersResponse:
-      title: UsersResponse
-      required:
-      - users
-      type: object
-      properties:
-        nextPageToken:
-          type: string
-          description: Token to fetch the next page
-        users:
-          type: array
-          items:
-            $ref: '#/components/schemas/User'
-      description: Response from the users endpoint
-    User:
-      title: User
-      required:
-      - email
-      - firstName
-      - lastName
-      - userUuid
-      type: object
-      properties:
-        accesses:
-          type: array
-          description: List of accesses a user has
-          items:
-            $ref: '#/components/schemas/UserAccess'
-        email:
-          type: string
-          example: john.smith@example.com
-        firstName:
-          type: string
-          example: John
-        lastName:
-          type: string
-          example: Smith
-        phone:
-          type: string
-          example: +1-111-111-1111
-        userUuid:
-          type: string
-          description: User identifier
-          format: uuid
-      description: DOOR User object
-    Doorcode:
-      title: Doorcode
-      required:
-      - code
-      - description
-      type: object
-      properties:
-        code:
-          type: string
-          description: A 7 digit doorcode to unlock door/key
-          example: '1234567'
-        description:
-          type: string
-          description: A message to explain the doorcode result
-          enum:
-          - COMMUNAL_DOORCODE_CONFLICT
-          - USER_HAS_GUEST_ACCESS_CONFLICT
-          - USER_HAS_RESIDENT_ACCESS
-          - VALID
-      description: Doorcode object
-    Resident:
-      title: Resident
-      required:
-      - email
-      - firstName
-      - lastName
-      - userUuid
-      type: object
-      properties:
-        email:
-          type: string
-          example: john.smith@example.com
-        firstName:
-          type: string
-          example: John
-        lastName:
-          type: string
-          example: Smith
-        phone:
-          type: string
-          example: +1-111-111-1111
-        userUuid:
-          type: string
-          description: Unique identifier of the user
-          format: uuid
-      description: Resident object
-    UnauthorizedError:
-      title: UnauthorizedError
-      required:
-      - message
-      type: object
-      properties:
-        message:
-          type: string
-          enum:
-          - UNAUTHORIZED
-    InternalServerError:
-      title: InternalServerError
-      required:
-      - message
-      type: object
-      properties:
-        message:
-          type: string
-          enum:
-          - INTERNAL_SERVER_ERROR
     UserAccess:
       title: UserAccess
       required:
@@ -413,6 +239,180 @@ components:
           description: User identifier
           format: uuid
       description: Definition of a User's Access to a Door/Key and the metadata associated
+    UsersResponse:
+      title: UsersResponse
+      required:
+      - users
+      type: object
+      properties:
+        nextPageToken:
+          type: string
+          description: Token to fetch the next page
+        users:
+          type: array
+          items:
+            $ref: '#/components/schemas/User'
+      description: Response from the users endpoint
+    UnauthorizedError:
+      title: UnauthorizedError
+      required:
+      - message
+      type: object
+      properties:
+        message:
+          type: string
+          enum:
+          - UNAUTHORIZED
+    NotFoundError:
+      title: NotFoundError
+      required:
+      - message
+      type: object
+      properties:
+        message:
+          type: string
+          enum:
+          - NOT_FOUND
+    Doorcode:
+      title: Doorcode
+      required:
+      - code
+      - description
+      type: object
+      properties:
+        code:
+          type: string
+          description: A 7 digit doorcode to unlock door/key
+          example: '1234567'
+        description:
+          type: string
+          description: A message to explain the doorcode result
+          enum:
+          - COMMUNAL_DOORCODE_CONFLICT
+          - USER_HAS_GUEST_ACCESS_CONFLICT
+          - USER_HAS_RESIDENT_ACCESS
+          - VALID
+      description: Doorcode object
+    InternalServerError:
+      title: InternalServerError
+      required:
+      - message
+      type: object
+      properties:
+        message:
+          type: string
+          enum:
+          - INTERNAL_SERVER_ERROR
+    Resident:
+      title: Resident
+      required:
+      - email
+      - firstName
+      - lastName
+      - userUuid
+      type: object
+      properties:
+        email:
+          type: string
+          example: john.smith@example.com
+        firstName:
+          type: string
+          example: John
+        lastName:
+          type: string
+          example: Smith
+        phone:
+          type: string
+          example: +1-111-111-1111
+        userUuid:
+          type: string
+          description: Unique identifier of the user
+          format: uuid
+      description: Resident object
+    User:
+      title: User
+      required:
+      - email
+      - firstName
+      - lastName
+      - userUuid
+      type: object
+      properties:
+        accesses:
+          type: array
+          description: List of accesses a user has
+          items:
+            $ref: '#/components/schemas/UserAccess'
+        email:
+          type: string
+          example: john.smith@example.com
+        firstName:
+          type: string
+          example: John
+        lastName:
+          type: string
+          example: Smith
+        phone:
+          type: string
+          example: +1-111-111-1111
+        userUuid:
+          type: string
+          description: User identifier
+          format: uuid
+      description: DOOR User object
+    ResidentsResponse:
+      title: ResidentsResponse
+      required:
+      - residents
+      type: object
+      properties:
+        nextPageToken:
+          type: string
+          description: Token to fetch the next page
+        residents:
+          type: array
+          items:
+            $ref: '#/components/schemas/Resident'
+      description: Response from the residents endpoint. Returns first 100 residents by default
+    AccessGranter:
+      title: AccessGranter
+      required:
+      - type
+      - uuid
+      type: object
+      properties:
+        type:
+          type: string
+          description: Type of granter
+          enum:
+          - PARTNER
+          - USER
+        uuid:
+          type: string
+          description: identifier of the granter of access
+          format: uuid
+      description: Definition of the granter of Access
+    BadRequestError:
+      title: BadRequestError
+      required:
+      - message
+      type: object
+      properties:
+        message:
+          type: string
+          enum:
+          - BUILDING_UUID_REQUIRED
+          - EMAIL_AND_PHONE_PROVIDED
+          - EMAIL_CAN_NOT_BE_EMPTY
+          - EMAIL_OR_PHONE_REQUIRED
+          - EMAIL_REQUIRED_FOR_PERMANENT
+          - END_TIME_NOT_SUPPORTED
+          - INVALID_END_TIME
+          - INVALID_PHONE
+          - INVALID_START_TIME
+          - MISSING_END_TIME
+          - PASSCODE_TYPE_CANT_BE_REVOKED
+          - USER_CAN_NOT_SHARE
   securitySchemes:
     bearerAuth:
       type: http

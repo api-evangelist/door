@@ -64,16 +64,6 @@ components:
           enum:
           - Bearer
       description: Response from the authentication endpoint
-    UnauthorizedError:
-      title: UnauthorizedError
-      required:
-      - message
-      type: object
-      properties:
-        message:
-          type: string
-          enum:
-          - UNAUTHORIZED
     AuthorizationRequestParams:
       title: AuthorizationRequestParams
       required:
@@ -99,3 +89,13 @@ components:
           enum:
           - client_credentials
       description: Parameters for the Auth0 endpoint
+    UnauthorizedError:
+      title: UnauthorizedError
+      required:
+      - message
+      type: object
+      properties:
+        message:
+          type: string
+          enum:
+          - UNAUTHORIZED

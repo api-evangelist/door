@@ -57,51 +57,17 @@ paths:
       - bearerAuth: []
 components:
   schemas:
-    BadRequestError:
-      title: BadRequestError
+    BuildingsResponse:
+      title: BuildingsResponse
       required:
-      - message
+      - buildings
       type: object
       properties:
-        message:
-          type: string
-          enum:
-          - BUILDING_UUID_REQUIRED
-          - EMAIL_AND_PHONE_PROVIDED
-          - EMAIL_CAN_NOT_BE_EMPTY
-          - EMAIL_OR_PHONE_REQUIRED
-          - EMAIL_REQUIRED_FOR_PERMANENT
-          - END_TIME_NOT_SUPPORTED
-          - INVALID_END_TIME
-          - INVALID_PHONE
-          - INVALID_START_TIME
-          - MISSING_END_TIME
-          - PASSCODE_TYPE_CANT_BE_REVOKED
-          - USER_CAN_NOT_SHARE
-    Building:
-      title: Building
-      required:
-      - address
-      - name
-      - uuid
-      type: object
-      properties:
-        address:
-          $ref: '#/components/schemas/Address'
-        name:
-          type: string
-          description: Name of the Building
-        portfolio:
-          $ref: '#/components/schemas/Portfolio'
-        timezone:
-          type: string
-          description: Timezone of the building in IANA zone ID format
-          example: America/New_York
-        uuid:
-          type: string
-          description: Building unique identifier
-          format: uuid
-      description: DOOR Building object
+        buildings:
+          type: array
+          items:
+            $ref: '#/components/schemas/Building'
+      description: Response from the buildings endpoint
     Portfolio:
       title: Portfolio
       required:
@@ -171,17 +137,51 @@ components:
           type: string
           enum:
           - INTERNAL_SERVER_ERROR
-    BuildingsResponse:
-      title: BuildingsResponse
+    Building:
+      title: Building
       required:
-      - buildings
+      - address
+      - name
+      - uuid
       type: object
       properties:
-        buildings:
-          type: array
-          items:
-            $ref: '#/components/schemas/Building'
-      description: Response from the buildings endpoint
+        address:
+          $ref: '#/components/schemas/Address'
+        name:
+          type: string
+          description: Name of the Building
+        portfolio:
+          $ref: '#/components/schemas/Portfolio'
+        timezone:
+          type: string
+          description: Timezone of the building in IANA zone ID format
+          example: America/New_York
+        uuid:
+          type: string
+          description: Building unique identifier
+          format: uuid
+      description: DOOR Building object
+    BadRequestError:
+      title: BadRequestError
+      required:
+      - message
+      type: object
+      properties:
+        message:
+          type: string
+          enum:
+          - BUILDING_UUID_REQUIRED
+          - EMAIL_AND_PHONE_PROVIDED
+          - EMAIL_CAN_NOT_BE_EMPTY
+          - EMAIL_OR_PHONE_REQUIRED
+          - EMAIL_REQUIRED_FOR_PERMANENT
+          - END_TIME_NOT_SUPPORTED
+          - INVALID_END_TIME
+          - INVALID_PHONE
+          - INVALID_START_TIME
+          - MISSING_END_TIME
+          - PASSCODE_TYPE_CANT_BE_REVOKED
+          - USER_CAN_NOT_SHARE
   securitySchemes:
     bearerAuth:
       type: http

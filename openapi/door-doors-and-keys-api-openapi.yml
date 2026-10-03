@@ -150,23 +150,26 @@ paths:
       - bearerAuth: []
 components:
   schemas:
-    KeysResponse:
-      title: KeysResponse
+    Battery:
+      title: Battery
       required:
-      - keys
+      - lastUpdated
+      - percentage
       type: object
       properties:
-        keys:
-          type: array
-          items:
-            $ref: '#/components/schemas/Key'
-        nextPageToken:
-          type: string
-          description: Token to fetch the next page
-          example: '1'
-      description: Response from the keys endpoint
-    BadRequestError:
-      title: BadRequestError
+        lastUpdated:
+          type: integer
+          description: Indicates latest time when the battery percentage was updated
+          format: int64
+          example: 1737137633
+        percentage:
+          type: integer
+          description: Estimated battery percentage
+          format: int32
+          example: 92
+      description: Information on the device battery.
+    UnauthorizedError:
+      title: UnauthorizedError
       required:
       - message
       type: object
@@ -174,18 +177,17 @@ components:
         message:
           type: string
           enum:
-          - BUILDING_UUID_REQUIRED
-          - EMAIL_AND_PHONE_PROVIDED
-          - EMAIL_CAN_NOT_BE_EMPTY
-          - EMAIL_OR_PHONE_REQUIRED
-          - EMAIL_REQUIRED_FOR_PERMANENT
-          - END_TIME_NOT_SUPPORTED
-          - INVALID_END_TIME
-          - INVALID_PHONE
-          - INVALID_START_TIME
-          - MISSING_END_TIME
-          - PASSCODE_TYPE_CANT_BE_REVOKED
-          - USER_CAN_NOT_SHARE
+          - UNAUTHORIZED
+    InternalServerError:
+      title: InternalServerError
+      required:
+      - message
+      type: object
+      properties:
+        message:
+          type: string
+          enum:
+          - INTERNAL_SERVER_ERROR
     Key:
       title: Key
       required:
@@ -234,83 +236,40 @@ components:
           description: Key unique identifier
           format: uuid
       description: DOOR Key object
-    InternalServerError:
-      title: InternalServerError
+    DeviceInfo:
+      title: DeviceInfo
       required:
-      - message
+      - battery
+      - serialNumber
+      - type
       type: object
       properties:
-        message:
+        battery:
+          $ref: '#/components/schemas/Battery'
+        serialNumber:
           type: string
-          enum:
-          - INTERNAL_SERVER_ERROR
-    KeyDoor:
-      title: KeyDoor
-      required:
-      - name
-      - sdkDoorUuid
-      type: object
-      properties:
-        name:
-          type: string
-          description: Name of the door/key
-        sdkDoorUuid:
-          type: string
-          description: DOOR Door/Key Unique Identifier - for SDK use only
-          format: uuid
+          description: Serial number of the lock device
+          example: 0123456789
         type:
           type: string
-          description: Door/Key type.
-          enum:
-          - COMMUNAL
-          - ELEVATOR
-          - ENTRANCE
-          - RESIDENCE
-          - SERVICE
-      description: Door/Key associated with a Key
-    Battery:
-      title: Battery
+          description: DOOR device type
+          example: C
+      description: Additional information about the physical lock device.
+    KeysResponse:
+      title: KeysResponse
       required:
-      - lastUpdated
-      - percentage
+      - keys
       type: object
       properties:
-        lastUpdated:
-          type: integer
-          description: Indicates latest time when the battery percentage was updated
-          format: int64
-          example: 1737137633
-        percentage:
-          type: integer
-          description: Estimated battery percentage
-          format: int32
-          example: 92
-      description: Information on the device battery.
-    UnauthorizedError:
-      title: UnauthorizedError
-      required:
-      - message
-      type: object
-      properties:
-        message:
-          type: string
-          enum:
-          - UNAUTHORIZED
-    DoorsResponse:
-      title: DoorsResponse
-      required:
-      - doors
-      type: object
-      properties:
-        doors:
+        keys:
           type: array
           items:
-            $ref: '#/components/schemas/Door'
+            $ref: '#/components/schemas/Key'
         nextPageToken:
           type: string
           description: Token to fetch the next page
           example: '1'
-      description: Response from the doors/keys endpoint
+      description: Response from the keys endpoint
     Door:
       title: Door
       required:
@@ -353,25 +312,66 @@ components:
           description: Door/Key unique identifier
           format: uuid
       description: DOOR Door/Key object
-    DeviceInfo:
-      title: DeviceInfo
+    KeyDoor:
+      title: KeyDoor
       required:
-      - battery
-      - serialNumber
-      - type
+      - name
+      - sdkDoorUuid
       type: object
       properties:
-        battery:
-          $ref: '#/components/schemas/Battery'
-        serialNumber:
+        name:
           type: string
-          description: Serial number of the lock device
-          example: 0123456789
+          description: Name of the door/key
+        sdkDoorUuid:
+          type: string
+          description: DOOR Door/Key Unique Identifier - for SDK use only
+          format: uuid
         type:
           type: string
-          description: DOOR device type
-          example: C
-      description: Additional information about the physical lock device.
+          description: Door/Key type.
+          enum:
+          - COMMUNAL
+          - ELEVATOR
+          - ENTRANCE
+          - RESIDENCE
+          - SERVICE
+      description: Door/Key associated with a Key
+    BadRequestError:
+      title: BadRequestError
+      required:
+      - message
+      type: object
+      properties:
+        message:
+          type: string
+          enum:
+          - BUILDING_UUID_REQUIRED
+          - EMAIL_AND_PHONE_PROVIDED
+          - EMAIL_CAN_NOT_BE_EMPTY
+          - EMAIL_OR_PHONE_REQUIRED
+          - EMAIL_REQUIRED_FOR_PERMANENT
+          - END_TIME_NOT_SUPPORTED
+          - INVALID_END_TIME
+          - INVALID_PHONE
+          - INVALID_START_TIME
+          - MISSING_END_TIME
+          - PASSCODE_TYPE_CANT_BE_REVOKED
+          - USER_CAN_NOT_SHARE
+    DoorsResponse:
+      title: DoorsResponse
+      required:
+      - doors
+      type: object
+      properties:
+        doors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Door'
+        nextPageToken:
+          type: string
+          description: Token to fetch the next page
+          example: '1'
+      description: Response from the doors/keys endpoint
   securitySchemes:
     bearerAuth:
       type: http
