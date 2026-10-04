@@ -150,6 +150,21 @@ paths:
       - bearerAuth: []
 components:
   schemas:
+    KeysResponse:
+      title: KeysResponse
+      required:
+      - keys
+      type: object
+      properties:
+        keys:
+          type: array
+          items:
+            $ref: '#/components/schemas/Key'
+        nextPageToken:
+          type: string
+          description: Token to fetch the next page
+          example: '1'
+      description: Response from the keys endpoint
     Battery:
       title: Battery
       required:
@@ -168,8 +183,69 @@ components:
           format: int32
           example: 92
       description: Information on the device battery.
-    UnauthorizedError:
-      title: UnauthorizedError
+    Door:
+      title: Door
+      required:
+      - buildingUuid
+      - name
+      - type
+      - uuid
+      type: object
+      properties:
+        accessibilityType:
+          type: string
+          enum:
+          - COMMUNAL
+          - PRIVATE
+        buildingUuid:
+          type: string
+          description: UUID of the building
+          format: uuid
+        device:
+          $ref: '#/components/schemas/DeviceInfo'
+        isConnected:
+          type: boolean
+          description: Indicates whether a door/key is connected to the internet via wifi/ethernet/hub
+          example: false
+        name:
+          type: string
+          description: Name of the door/key
+        sdkDoorUuid:
+          type: string
+          description: DOOR Door/Key Unique Identifier - for SDK use only
+          format: uuid
+        type:
+          type: string
+          description: Type of door/key
+          enum:
+          - DOOR
+          - ELEVATOR
+        uuid:
+          type: string
+          description: Door/Key unique identifier
+          format: uuid
+      description: DOOR Door/Key object
+    DeviceInfo:
+      title: DeviceInfo
+      required:
+      - battery
+      - serialNumber
+      - type
+      type: object
+      properties:
+        battery:
+          $ref: '#/components/schemas/Battery'
+        serialNumber:
+          type: string
+          description: Serial number of the lock device
+          example: 0123456789
+        type:
+          type: string
+          description: DOOR device type
+          example: C
+      description: Additional information about the physical lock device.
+    BadRequestError:
+      title: BadRequestError
       required:
       - message
       type: object
@@ -177,7 +253,42 @@ components:
         message:
           type: string
           enum:
-          - UNAUTHORIZED
+          - BUILDING_UUID_REQUIRED
+          - EMAIL_AND_PHONE_PROVIDED
+          - EMAIL_CAN_NOT_BE_EMPTY
+          - EMAIL_OR_PHONE_REQUIRED
+          - EMAIL_REQUIRED_FOR_PERMANENT
+          - END_TIME_NOT_SUPPORTED
+          - INVALID_END_TIME
+          - INVALID_PHONE
+          - INVALID_START_TIME
+          - MISSING_END_TIME
+          - PASSCODE_TYPE_CANT_BE_REVOKED
+          - USER_CAN_NOT_SHARE
+    KeyDoor:
+      title: KeyDoor
+      required:
+      - name
+      - sdkDoorUuid
+      type: object
+      properties:
+        name:
+          type: string
+          description: Name of the door/key
+        sdkDoorUuid:
+          type: string
+          description: DOOR Door/Key Unique Identifier - for SDK use only
+          format: uuid
+        type:
+          type: string
+          description: Door/Key type.
+          enum:
+          - COMMUNAL
+          - ELEVATOR
+          - ENTRANCE
+          - RESIDENCE
+          - SERVICE
+      description: Door/Key associated with a Key
     InternalServerError:
       title: InternalServerError
       required:
@@ -188,6 +299,31 @@ components:
           type: string
           enum:
           - INTERNAL_SERVER_ERROR
+    DoorsResponse:
+      title: DoorsResponse
+      required:
+      - doors
+      type: object
+      properties:
+        doors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Door'
+        nextPageToken:
+          type: string
+          description: Token to fetch the next page
+          example: '1'
+      description: Response from the doors/keys endpoint
+    UnauthorizedError:
+      title: UnauthorizedError
+      required:
+      - message
+      type: object
+      properties:
+        message:
+          type: string
+          enum:
+          - UNAUTHORIZED
     Key:
       title: Key
       required:
@@ -236,142 +372,6 @@ components:
           description: Key unique identifier
           format: uuid
       description: DOOR Key object
-    DeviceInfo:
-      title: DeviceInfo
-      required:
-      - battery
-      - serialNumber
-      - type
-      type: object
-      properties:
-        battery:
-          $ref: '#/components/schemas/Battery'
-        serialNumber:
-          type: string
-          description: Serial number of the lock device
-          example: 0123456789
-        type:
-          type: string
-          description: DOOR device type
-          example: C
-      description: Additional information about the physical lock device.
-    KeysResponse:
-      title: KeysResponse
-      required:
-      - keys
-      type: object
-      properties:
-        keys:
-          type: array
-          items:
-            $ref: '#/components/schemas/Key'
-        nextPageToken:
-          type: string
-          description: Token to fetch the next page
-          example: '1'
-      description: Response from the keys endpoint
-    Door:
-      title: Door
-      required:
-      - buildingUuid
-      - name
-      - type
-      - uuid
-      type: object
-      properties:
-        accessibilityType:
-          type: string
-          enum:
-          - COMMUNAL
-          - PRIVATE
-        buildingUuid:
-          type: string
-          description: UUID of the building
-          format: uuid
-        device:
-          $ref: '#/components/schemas/DeviceInfo'
-        isConnected:
-          type: boolean
-          description: Indicates whether a door/key is connected to the internet via wifi/ethernet/hub
-          example: false
-        name:
-          type: string
-          description: Name of the door/key
-        sdkDoorUuid:
-          type: string
-          description: DOOR Door/Key Unique Identifier - for SDK use only
-          format: uuid
-        type:
-          type: string
-          description: Type of door/key
-          enum:
-          - DOOR
-          - ELEVATOR
-        uuid:
-          type: string
-          description: Door/Key unique identifier
-          format: uuid
-      description: DOOR Door/Key object
-    KeyDoor:
-      title: KeyDoor
-      required:
-      - name
-      - sdkDoorUuid
-      type: object
-      properties:
-        name:
-          type: string
-          description: Name of the door/key
-        sdkDoorUuid:
-          type: string
-          description: DOOR Door/Key Unique Identifier - for SDK use only
-          format: uuid
-        type:
-          type: string
-          description: Door/Key type.
-          enum:
-          - COMMUNAL
-          - ELEVATOR
-          - ENTRANCE
-          - RESIDENCE
-          - SERVICE
-      description: Door/Key associated with a Key
-    BadRequestError:
-      title: BadRequestError
-      required:
-      - message
-      type: object
-      properties:
-        message:
-          type: string
-          enum:
-          - BUILDING_UUID_REQUIRED
-          - EMAIL_AND_PHONE_PROVIDED
-          - EMAIL_CAN_NOT_BE_EMPTY
-          - EMAIL_OR_PHONE_REQUIRED
-          - EMAIL_REQUIRED_FOR_PERMANENT
-          - END_TIME_NOT_SUPPORTED
-          - INVALID_END_TIME
-          - INVALID_PHONE
-          - INVALID_START_TIME
-          - MISSING_END_TIME
-          - PASSCODE_TYPE_CANT_BE_REVOKED
-          - USER_CAN_NOT_SHARE
-    DoorsResponse:
-      title: DoorsResponse
-      required:
-      - doors
-      type: object
-      properties:
-        doors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Door'
-        nextPageToken:
-          type: string
-          description: Token to fetch the next page
-          example: '1'
-      description: Response from the doors/keys endpoint
   securitySchemes:
     bearerAuth:
       type: http

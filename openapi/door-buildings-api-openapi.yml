@@ -57,17 +57,6 @@ paths:
       - bearerAuth: []
 components:
   schemas:
-    BuildingsResponse:
-      title: BuildingsResponse
-      required:
-      - buildings
-      type: object
-      properties:
-        buildings:
-          type: array
-          items:
-            $ref: '#/components/schemas/Building'
-      description: Response from the buildings endpoint
     Portfolio:
       title: Portfolio
       required:
@@ -83,6 +72,72 @@ components:
           description: Portfolio unique identifier
           format: uuid
       description: DOOR Portfolio object
+    Building:
+      title: Building
+      required:
+      - address
+      - name
+      - uuid
+      type: object
+      properties:
+        address:
+          $ref: '#/components/schemas/Address'
+        name:
+          type: string
+          description: Name of the Building
+        portfolio:
+          $ref: '#/components/schemas/Portfolio'
+        timezone:
+          type: string
+          description: Timezone of the building in IANA zone ID format
+          example: America/New_York
+        uuid:
+          type: string
+          description: Building unique identifier
+          format: uuid
+      description: DOOR Building object
+    BuildingsResponse:
+      title: BuildingsResponse
+      required:
+      - buildings
+      type: object
+      properties:
+        buildings:
+          type: array
+          items:
+            $ref: '#/components/schemas/Building'
+      description: Response from the buildings endpoint
+    BadRequestError:
+      title: BadRequestError
+      required:
+      - message
+      type: object
+      properties:
+        message:
+          type: string
+          enum:
+          - BUILDING_UUID_REQUIRED
+          - EMAIL_AND_PHONE_PROVIDED
+          - EMAIL_CAN_NOT_BE_EMPTY
+          - EMAIL_OR_PHONE_REQUIRED
+          - EMAIL_REQUIRED_FOR_PERMANENT
+          - END_TIME_NOT_SUPPORTED
+          - INVALID_END_TIME
+          - INVALID_PHONE
+          - INVALID_START_TIME
+          - MISSING_END_TIME
+          - PASSCODE_TYPE_CANT_BE_REVOKED
+          - USER_CAN_NOT_SHARE
+    InternalServerError:
+      title: InternalServerError
+      required:
+      - message
+      type: object
+      properties:
+        message:
+          type: string
+          enum:
+          - INTERNAL_SERVER_ERROR
     UnauthorizedError:
       title: UnauthorizedError
       required:
@@ -127,61 +182,6 @@ components:
           type: string
           description: State the building is located in
       description: Address of the building
-    InternalServerError:
-      title: InternalServerError
-      required:
-      - message
-      type: object
-      properties:
-        message:
-          type: string
-          enum:
-          - INTERNAL_SERVER_ERROR
-    Building:
-      title: Building
-      required:
-      - address
-      - name
-      - uuid
-      type: object
-      properties:
-        address:
-          $ref: '#/components/schemas/Address'
-        name:
-          type: string
-          description: Name of the Building
-        portfolio:
-          $ref: '#/components/schemas/Portfolio'
-        timezone:
-          type: string
-          description: Timezone of the building in IANA zone ID format
-          example: America/New_York
-        uuid:
-          type: string
-          description: Building unique identifier
-          format: uuid
-      description: DOOR Building object
-    BadRequestError:
-      title: BadRequestError
-      required:
-      - message
-      type: object
-      properties:
-        message:
-          type: string
-          enum:
-          - BUILDING_UUID_REQUIRED
-          - EMAIL_AND_PHONE_PROVIDED
-          - EMAIL_CAN_NOT_BE_EMPTY
-          - EMAIL_OR_PHONE_REQUIRED
-          - EMAIL_REQUIRED_FOR_PERMANENT
-          - END_TIME_NOT_SUPPORTED
-          - INVALID_END_TIME
-          - INVALID_PHONE
-          - INVALID_START_TIME
-          - MISSING_END_TIME
-          - PASSCODE_TYPE_CANT_BE_REVOKED
-          - USER_CAN_NOT_SHARE
   securitySchemes:
     bearerAuth:
       type: http
