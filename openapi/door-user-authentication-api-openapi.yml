@@ -110,25 +110,6 @@ paths:
           description: Not Found
 components:
   schemas:
-    PasswordlessStartResponseParams:
-      title: PasswordlessStartResponseParams
-      required:
-      - _id
-      - email
-      - email_verified
-      type: object
-      properties:
-        _id:
-          type: string
-          description: Auth0 request identifier
-        email:
-          type: string
-          description: User email
-        email_verified:
-          type: boolean
-          description: Verification status of Auth0 account associated with user email. This will not impact the auth flow.
-          example: false
-      description: Response from the authentication endpoint
     PasswordlessAuthorizationRequestParams:
       title: PasswordlessAuthorizationRequestParams
       required:
@@ -173,25 +154,24 @@ components:
           type: string
           description: Email of user
       description: Parameters for the Auth0 passwordless token endpoint
-    PasswordlessAuthorizationResponseParams:
-      title: PasswordlessAuthorizationResponseParams
+    PasswordlessStartResponseParams:
+      title: PasswordlessStartResponseParams
       required:
-      - access_token
-      - refresh_token
-      - token_type
+      - _id
+      - email
+      - email_verified
       type: object
       properties:
-        access_token:
+        _id:
           type: string
-          description: Auth0 access token
-        refresh_token:
+          description: Auth0 request identifier
+        email:
           type: string
-          description: Auth0 refresh token
-        token_type:
-          type: string
-          description: Token type
-          enum:
-          - Bearer
+          description: User email
+        email_verified:
+          type: boolean
+          description: Verification status of Auth0 account associated with user email. This will not impact the auth flow.
+          example: false
       description: Response from the authentication endpoint
     AuthorizationRefreshRequestParams:
       title: AuthorizationRefreshRequestParams
@@ -232,6 +212,26 @@ components:
           type: string
           enum:
           - UNAUTHORIZED
+    PasswordlessAuthorizationResponseParams:
+      title: PasswordlessAuthorizationResponseParams
+      required:
+      - access_token
+      - refresh_token
+      - token_type
+      type: object
+      properties:
+        access_token:
+          type: string
+          description: Auth0 access token
+        refresh_token:
+          type: string
+          description: Auth0 refresh token
+        token_type:
+          type: string
+          description: Token type
+          enum:
+          - Bearer
+      description: Response from the authentication endpoint
     PasswordlessStartRequestParams:
       title: PasswordlessStartRequestParams
       required:
