@@ -78,6 +78,8 @@ apis:
   humanURL: https://developers.door.com/reference
   baseURL: https://rest.latchaccess.com/access/sdk
   tags:
+  - Identity and Access Management
+  tags_raw:
   - Access Management
   properties:
   - type: OpenAPI
